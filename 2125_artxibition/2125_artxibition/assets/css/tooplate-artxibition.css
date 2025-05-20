@@ -2588,3 +2588,43 @@ responsive
     transform: translateY(0px);
   }
 }
+.main-banner {
+  background-image: url("../images/show-events-bg-normal.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 60vh;
+  position: relative;
+}
+
+.welcome-text {
+  position: absolute;
+  top: 60%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+  color: #f9f9f9;
+  font-size: 75px;
+  font-weight: 550;
+}
+.custom-login-nav {
+  background-color: #f97316;
+  color: white !important;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 16px;
+  text-decoration: none !important;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  text-align: center;
+  height: 45px;
+  line-height: 45px;
+}
+
+.custom-login-nav:hover {
+  background-color: #ea580c;
+}
+
+.nav-login-text {
+  position: relative;
+  top: -8px;
+}
