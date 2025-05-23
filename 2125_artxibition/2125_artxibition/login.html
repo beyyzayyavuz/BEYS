@@ -304,5 +304,18 @@
     <script src="assets/js/owl-carousel.js"></script>
     <script src="assets/js/custom.js"></script>
     <script src="assets/js/login.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const loginForm = document.querySelector(".form-box.login");
+
+      loginForm.addEventListener("submit", function (e) {
+        e.preventDefault(); // sayfanın yenilenmesini engeller
+
+        // burada kullanıcı adı ve şifre kontrolü yapılıyorsa ekle
+        // başarılıysa yönlendirme yap:
+        window.location.href = "index-after-logged-in.html";
+      });
+    });
+  </script>
   </body>
 </html>
