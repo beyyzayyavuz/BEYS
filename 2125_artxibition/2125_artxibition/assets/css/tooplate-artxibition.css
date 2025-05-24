@@ -741,6 +741,7 @@ Show Events Carousel
 ---------------------------------------------
 */
 .owl-show-events {
+  padding: 100px 0;
   position: relative;
   margin-top: -60px;
 }
@@ -853,6 +854,7 @@ Venues & Tickets
   margin: 15px;
   text-align: center;
   color: #fff;
+
   transition: transform 0.3s ease;
 }
 
@@ -863,7 +865,7 @@ Venues & Tickets
 /* Resim boyutu - sabit ve responsive */
 .venue-item .thumb img {
   width: 100%;
-  height: 180px;
+  height: 250px;
   object-fit: cover;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -871,7 +873,8 @@ Venues & Tickets
 
 /* İçerik alanı */
 .venue-item .down-content {
-  padding: 15px;
+  padding: 35px;
+  background-color: #2d2d3027;
 }
 
 .venue-item .down-content h4 {
@@ -883,7 +886,7 @@ Venues & Tickets
 .venue-item .down-content p {
   font-size: 14px;
   font-weight: 300;
-  color: #ddd;
+  color: #dddddd9c;
   margin-bottom: 10px;
 }
 
@@ -1007,8 +1010,9 @@ Subscribe
 */
 
 .subscribe {
-  background-color: #7c838b;
-  padding: 30px 0px;
+  background-color: transparent; /* Arkaplanı kaldırıyoruz */
+  border-top: 1px solid #e0e0e0; /* İnce gri çizgi */
+  margin: 40px 0; /* Üst-alt boşluk */
 }
 
 .subscribe h4 {
@@ -2656,4 +2660,56 @@ responsive
 
 .cart-buttons button:hover {
   background-color: #555;
+}
+.impact-zone {
+  background-color: #f9f9f9;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.impact-zone h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #2a2a2a;
+}
+
+.stats-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.stat-box {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 30px 20px;
+  width: 200px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.stat-box i {
+  font-size: 36px;
+  color: #f97316;
+  margin-bottom: 15px;
+}
+
+.stat-box h3 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2a2a2a;
+  margin-bottom: 8px;
+}
+
+.stat-box p {
+  font-size: 14px;
+  color: #7c838b;
+  margin: 0;
 }

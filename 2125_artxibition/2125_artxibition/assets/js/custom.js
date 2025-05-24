@@ -128,18 +128,35 @@
 })(window.jQuery);
 $(document).ready(function () {
   $(".upcoming-events-slider .owl-carousel").owlCarousel({
-    items: 3,
+    items: 4,
     loop: true,
-    margin: 20,
+    margin: 25 /* Az bir boşluk bırak */,
     autoplay: true,
-    autoplayTimeout: 4000,
-    autoplayHoverPause: true,
+    autoplayTimeout: 6000,
+    autoplayHoverPause: true, // Hover olunca durur
     nav: true,
     dots: true,
     responsive: {
       0: { items: 1 },
       600: { items: 2 },
-      1000: { items: 3 },
+      900: { items: 3 },
+      1200: { items: 4 },
+    },
+  });
+});
+$(document).ready(function () {
+  $(".weekend-events-slider .owl-carousel").owlCarousel({
+    items: 4,
+    loop: true,
+    margin: 25 /* Az bir boşluk bırak */,
+    autoplay: false,
+    nav: true,
+    dots: true,
+    responsive: {
+      0: { items: 1 },
+      600: { items: 2 },
+      900: { items: 3 },
+      1200: { items: 4 },
     },
   });
 });
