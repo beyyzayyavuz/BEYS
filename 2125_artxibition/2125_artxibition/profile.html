@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BEYS Home Page</title>
+
+    <!-- CSS -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/font-awesome.css" />
+    <link rel="stylesheet" href="assets/css/owl-carousel.css" />
+     <link rel="stylesheet" href="assets/css/profile.css" />
+    <link rel="stylesheet" href="assets/css/tooplate-artxibition.css" />
+  </head>
+
+  <body>
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+      <div class="preloader-inner">
+        <span class="dot"></span>
+        <div class="dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
+    <!-- ***** Pre HEader ***** -->
+    <div class="pre-header">
+      <div class="container">
+        <div class="row">
+          <div class="col text-end">
+            <div class="text-button">
+              <a href="contact-us-after-logged-in.html">
+                Contact Us Now! <i class="fa fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <nav class="main-nav">
+              <!-- Logo -->
+              <a href="index-after-logged-in.html" class="logo">BEYS</a>
+
+              <!-- Menu -->
+              <ul class="nav">
+                <li>
+                  <a href="index-after-logged-in.html" >Home</a>
+                </li>
+                <li><a href="events-after-logged-in.html">Events</a></li>
+                <li><a href="favorites.html">My Favorites</a></li>
+                <li><a href="cart.html">My Cart</a></li>
+                <li>
+                  <a href="profile.html" class="active">My Profile</a>
+                </li>
+              </ul>
+
+              <a class="menu-trigger">
+                <span>Menu</span>
+              </a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <!-- ***** Main Banner Area Start ***** -->
+    <div class="main-banner">
+      <div class="welcome-text">My Profile</div>
+    </div>
+    <!-- ***** Main Banner Area End ***** -->
+
+</head>
+<body>
+  <div class="container profile-container">
+    <div class="sidebar">
+      <div class="avatar">
+        <i class="fa fa-user"></i>
+      </div>
+      <strong id="username">Welcome</strong>
+      <ul>
+        <li><a href="cart.html">My Cart</a></li>
+        <li><a href="favorites.html">My Favorites</a></li>
+        <li><a href="account-settings.html">Account Settings</a></li>
+      </ul>
+      <a href="#" class="logout" id="logout">Logout</a>
+    </div>
+
+    <div class="profile-form">
+      <form>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <input type="text" class="form-control" placeholder="First Name">
+          </div>
+          <div class="col-md-6 mb-3">
+            <input type="text" class="form-control" placeholder="Last Name">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <input type="date" class="form-control" placeholder="Birth of Date">
+          </div>
+          <div class="col-md-6 mb-3">
+            <select class="form-control">
+              <option>Gender</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Country Code">
+        </div>
+        <div class="profile-buttons">
+          <button type="submit" class="btn btn-primary">Update</button>
+          <button type="button" class="btn btn-danger">Delete Account</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Kullanıcı adını göster
+    const username = sessionStorage.getItem("username") || "User";
+    document.getElementById("username").textContent = `Welcome ${username}`;
+
+    // Logout işlemi
+    document.getElementById("logout").addEventListener("click", (e) => {
+      e.preventDefault();
+      sessionStorage.clear();
+      window.location.href = "login.html";
+    });
+  </script>
+    <!-- *** Footer *** -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="address">
+              <h4>BEYS Ticketing Office</h4>
+              <span>123 Event Avenue,<br />Istanbul, Türkiye<br />Europe</span>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="links">
+              <h4>Discover More</h4>
+              <ul>
+                <li><a href="#">Events</a></li>
+                <li><a href="#">Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="hours">
+              <h4>Open Hours</h4>
+              <ul>
+                <li>Mon to Fri: 8:00 AM to 6:00 PM</li>
+                <li>Sat - Sun: 11:00 AM to 4:00 PM</li>
+                <li>Holidays: Closed</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-12">
+            <div class="sub-footer">
+              <div class="row">
+                <div class="col-lg-3">
+                  <div class="main-nav">
+                    <a href="index.html" class="logo">BEYS</a>
+                  </div>
+                </div>
+
+                <div class="col-lg-9">
+                  <div class="social-links">
+                    <ul>
+                      <li>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                      </li>
+                      <li>
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                      </li>
+                      <li>
+                        <a href="#"><i class="fa fa-behance"></i></a>
+                      </li>
+                      <li>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery-2.1.0.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/scrollreveal.min.js"></script>
+    <script src="assets/js/waypoints.min.js"></script>
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="assets/js/imgfix.min.js"></script>
+    <script src="assets/js/mixitup.js"></script>
+    <script src="assets/js/accordions.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/events.js"></script>
+    <script src="assets/js/cart.js"></script>
+  </body>
+</html>

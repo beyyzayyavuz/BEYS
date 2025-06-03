@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // 2️⃣ Event Details Sayfası: Event Data Göster & Purchase Button
+  // 2️⃣ Event Details Sayfası: Event Bilgisi Göster & Purchase
   const eventPurchaseBtn = document.getElementById("purchase-button");
   if (eventPurchaseBtn) {
     const eventData = JSON.parse(sessionStorage.getItem("selectedEvent"));
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 4️⃣ Cart-2: Koltuk Seçimi ve Event Data Gösterimi
+  // 4️⃣ Cart-2: Koltuk Seçimi ve Bilgiler
   const seatGrid = document.querySelector(".seat-grid");
   if (seatGrid) {
     const eventData = JSON.parse(sessionStorage.getItem("selectedEvent"));
@@ -108,7 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const cols = 8;
       seatGrid.innerHTML = "";
 
-      // Koltukları Oluştur
       for (let r = 1; r <= rows; r++) {
         const rowDiv = document.createElement("div");
         rowDiv.classList.add("seat-row");
@@ -135,7 +134,6 @@ document.addEventListener("DOMContentLoaded", () => {
         seatGrid.appendChild(rowDiv);
       }
 
-      // Alt Kolon Numaraları
       const footer = document.createElement("div");
       footer.classList.add("seat-footer");
       footer.innerHTML =
@@ -145,7 +143,6 @@ document.addEventListener("DOMContentLoaded", () => {
         );
       seatGrid.appendChild(footer);
 
-      // Seçim Özeti Güncelle
       function updateSummary() {
         const count = document.querySelectorAll(".seat.selected").length;
         document.getElementById("selected-count").textContent = count;
@@ -157,64 +154,83 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // 5️⃣ Payment Butonu
+  // 5️⃣ Payment Butonu
   const paymentBtn = document.getElementById("payment-button");
   if (paymentBtn) {
     paymentBtn.addEventListener("click", (e) => {
       e.preventDefault();
 
-      const isLoggedIn = sessionStorage.getItem("isLoggedIn") === "true";
-      if (isLoggedIn) {
-        // Kullanıcı zaten giriş yapmışsa doğrudan cart-3.html'e git
-        window.location.href = "cart-3-after-logged-in.html";
+      const loginStatus = sessionStorage.getItem("isLoggedIn");
+
+      if (loginStatus === "guest") {
+        window.location.href = "cart-3.html"; // Guest → cart-3
+      } else if (loginStatus === "true") {
+        window.location.href = "cart-3-after-logged-in.html"; // Giriş yapmış → cart-3-after
       } else {
-        // Kullanıcı giriş yapmamışsa login'e yönlendir
-        sessionStorage.setItem("redirectAfterLogin", "cart-3.html");
+        // Giriş yapılmamışsa login'e yönlendir → ama cart3aftera dönecek şekilde
+        sessionStorage.setItem(
+          "redirectAfterLogin",
+          "cart-3-after-logged-in.html"
+        );
         window.location.href = "login.html";
       }
     });
   }
-  //dikkat
-  if (e.target.classList.contains("login-nav-text")) {
-    e.preventDefault();
-    sessionStorage.setItem("redirectAfterLogin", "index.html");
-    window.location.href = "login.html";
-  }
 
-  // 6️⃣ Login & Guest Akışı
+  // 6️⃣ Login Linki
+  document.body.addEventListener("click", function (e) {
+    if (e.target.classList.contains("login-nav-text")) {
+      e.preventDefault();
+      sessionStorage.setItem("redirectAfterLogin", "index.html");
+      window.location.href = "login.html";
+    }
+  });
+
+  // 7️⃣ Login İşlemi
   const loginForm = document.getElementById("login-form");
-  const guestBtn = document.getElementById("continue-as-guest");
-  const registerForm = document.getElementById("register-form");
-
   if (loginForm) {
     loginForm.addEventListener("submit", (e) => {
       e.preventDefault();
       sessionStorage.setItem("isLoggedIn", "true");
+
       const redirect =
         sessionStorage.getItem("redirectAfterLogin") ||
         "index-after-logged-in.html";
+      sessionStorage.removeItem("redirectAfterLogin");
       window.location.href = redirect;
     });
   }
 
+  // 8️⃣ Guest Devam Et
+  const guestBtn = document.getElementById("continue-as-guest");
   if (guestBtn) {
     guestBtn.addEventListener("click", (e) => {
       e.preventDefault();
       sessionStorage.setItem("isLoggedIn", "guest");
-      const redirect =
-        sessionStorage.getItem("redirectAfterLogin") ||
-        "index-after-logged-in.html";
+
+      // Eğer redirect değeri cart-3-after-logged-in.html ise, guest için bunu cart-3.html yap
+      let redirect =
+        sessionStorage.getItem("redirectAfterLogin") || "index.html";
+      if (redirect === "cart-3-after-logged-in.html") {
+        redirect = "cart-3.html";
+      }
+
+      sessionStorage.removeItem("redirectAfterLogin"); // 🔧 Bu çok önemli
+
       window.location.href = redirect;
     });
   }
 
+  // 9️⃣ Kayıt Formu
+  const registerForm = document.getElementById("register-form");
   if (registerForm) {
     registerForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      sessionStorage.setItem("isLoggedIn", "true");
       const redirect =
         sessionStorage.getItem("redirectAfterLogin") ||
         "index-after-logged-in.html";
-      window.location.href = redirect;
+      sessionStorage.setItem("redirectAfterLogin", redirect);
+      window.location.href = "login.html";
     });
   }
 });

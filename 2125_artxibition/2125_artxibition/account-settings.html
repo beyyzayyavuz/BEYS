@@ -7,24 +7,51 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <meta name="description" content="" />
-    <meta name="author" content="BEYS" />
+    <meta name="author" content="Tooplate" />
     <link
       href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
       rel="stylesheet"
     />
-    <title>BEYS - My Cart</title>
+
+    <title>BEYS Home Page</title>
+
+    <!-- Additional CSS Files -->
     <link
       rel="stylesheet"
       type="text/css"
       href="assets/css/bootstrap.min.css"
     />
+
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css" />
+
     <link rel="stylesheet" type="text/css" href="assets/css/owl-carousel.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/favorites.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/profile.css" />
+
     <link rel="stylesheet" href="assets/css/tooplate-artxibition.css" />
+
+    <!--
+
+Tooplate 2125 ArtXibition
+
+https://www.tooplate.com/view/2125-artxibition
+
+-->
   </head>
+
   <body>
-    <!-- Preloader -->
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+      <div class="preloader-inner">
+        <span class="dot"></span>
+        <div class="dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
     <div class="pre-header">
       <div class="container">
         <div class="row">
@@ -39,39 +66,67 @@
       </div>
     </div>
 
-    <!-- Header -->
+    <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky">
       <div class="container">
         <div class="row">
           <div class="col-12">
             <nav class="main-nav">
+              <!-- Logo -->
               <a href="index-after-logged-in.html" class="logo">BEYS</a>
+
+              <!-- Menu -->
               <ul class="nav">
-                <li><a href="index-after-logged-in.html">Home</a></li>
-                <li><a href="events-after-logged-in.html">Events</a></li>
                 <li>
-                  <a href="favorites.html " class="active">My Favorites</a>
+                  <a href="index-after-logged-in.html">Home</a>
                 </li>
+                <li><a href="events-after-logged-in.html">Events</a></li>
+                <li><a href="favorites.html">My Favorites</a></li>
                 <li><a href="cart.html">My Cart</a></li>
-                <li><a href="profile.html">My Profile</a></li>
+                <li>
+                  <a href="profile.html" class="active">My Profile</a>
+                </li>
               </ul>
-              <a class="menu-trigger"><span>Menu</span></a>
+
+              <a class="menu-trigger">
+                <span>Menu</span>
+              </a>
             </nav>
           </div>
         </div>
       </div>
     </header>
+    <!-- ***** Header Area End ***** -->
 
-    <!-- Banner -->
+    <!-- ***** Main Banner Area Start ***** -->
+    <!-- ***** Main Banner Area Start ***** -->
     <div class="main-banner">
-      <div class="welcome-text">My Favorites</div>
+      <div class="welcome-text">My Profile</div>
     </div>
+    <!-- ***** Main Banner Area End ***** -->
+    <div class="banner">Account Settings</div>
 
-    <main class="favorites-page">
-      <div class="container">
-        <div id="favorites-container" class="venue-tickets"></div>
+    <div class="settings-container">
+      <div>
+        <div class="form-group">
+          <input type="email" id="currentEmail" placeholder="Email" />
+          <input type="email" id="newEmail" placeholder="New Email" />
+        </div>
       </div>
-    </main>
+
+      <div>
+        <div class="form-group">
+          <input type="password" id="currentPassword" placeholder="Password" />
+          <input type="password" id="newPassword" placeholder="New Password" />
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-update" onclick="updateSettings()">Update</button>
+        <button class="btn-cancel" onclick="cancelChanges()">Cancel</button>
+      </div>
+    </div>
+    <!-- *** Footer *** -->
     <!-- *** Footer *** -->
     <footer>
       <div class="container">
@@ -136,10 +191,14 @@
       </div>
     </footer>
 
-    <!-- JS -->
+    <!-- jQuery -->
     <script src="assets/js/jquery-2.1.0.min.js"></script>
+
+    <!-- Bootstrap -->
     <script src="assets/js/popper.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
+
+    <!-- Plugins -->
     <script src="assets/js/scrollreveal.min.js"></script>
     <script src="assets/js/waypoints.min.js"></script>
     <script src="assets/js/jquery.counterup.min.js"></script>
@@ -147,59 +206,38 @@
     <script src="assets/js/mixitup.js"></script>
     <script src="assets/js/accordions.js"></script>
     <script src="assets/js/owl-carousel.js"></script>
-    <script src="assets/js/quantity.js"></script>
+    <script src="assets/js/cart.js"></script>
     <script src="assets/js/favorites.js"></script>
+    <script src="assets/js/account-settings.js"></script>
 
+    <!-- Global Init -->
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/events.js"></script>
+    <script src="assets/js/events.js"></script>
     <script>
-      // CART FUNCTIONALITY
-      document.addEventListener("DOMContentLoaded", function () {
-        const cartItemsEl = document.getElementById("cart-items");
-        const cartTotalQuantityEl = document.getElementById(
-          "cart-total-quantity"
-        );
-        const cartTotalPriceEl = document.getElementById("cart-total-price");
+      function updateSettings() {
+        const currentEmail = document.getElementById("currentEmail").value;
+        const newEmail = document.getElementById("newEmail").value;
+        const currentPassword =
+          document.getElementById("currentPassword").value;
+        const newPassword = document.getElementById("newPassword").value;
 
-        let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
-
-        function renderCart() {
-          cartItemsEl.innerHTML = "";
-          let totalQuantity = 0;
-          let totalPrice = 0;
-
-          cart.forEach((item, index) => {
-            const itemHTML = `
-              <div class="cart-item" data-index="${index}">
-                <h4>${item.event}</h4>
-                <p>Quantity: ${item.quantity}</p>
-                <p>Price: $${item.price}</p>
-                <p>Total: $${item.total}</p>
-                <button class="remove-item">Remove from Cart</button>
-                <button class="purchase-ticket">Purchase Tickets</button>
-                <hr>
-              </div>
-            `;
-            cartItemsEl.insertAdjacentHTML("beforeend", itemHTML);
-            totalQuantity += item.quantity;
-            totalPrice += item.total;
-          });
-
-          cartTotalQuantityEl.textContent = totalQuantity;
-          cartTotalPriceEl.textContent = `$${totalPrice.toFixed(2)}`;
+        if (!currentPassword || !newPassword) {
+          alert("Please fill in all password fields.");
+          return;
         }
 
-        cartItemsEl.addEventListener("click", function (e) {
-          if (e.target.classList.contains("remove-item")) {
-            const index = parseInt(
-              e.target.closest(".cart-item").getAttribute("data-index")
-            );
-            cart.splice(index, 1);
-            sessionStorage.setItem("cart", JSON.stringify(cart));
-            renderCart();
-          }
-        });
+        // Simulate update
+        alert("Your settings have been updated successfully.");
+        // TODO: Add backend logic here
+      }
 
-        renderCart();
-      });
+      function cancelChanges() {
+        document.getElementById("currentEmail").value = "";
+        document.getElementById("newEmail").value = "";
+        document.getElementById("currentPassword").value = "";
+        document.getElementById("newPassword").value = "";
+      }
     </script>
   </body>
 </html>
