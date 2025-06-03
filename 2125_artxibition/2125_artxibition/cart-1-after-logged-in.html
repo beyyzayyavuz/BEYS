@@ -7,12 +7,14 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <meta name="description" content="" />
-    <meta name="author" content="BEYS" />
+    <meta name="author" content="Tooplate" />
     <link
       href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
       rel="stylesheet"
     />
-    <title>BEYS - My Cart</title>
+    <title>BEYS - Select Ticket Category</title>
+
+    <!-- CSS Files -->
     <link
       rel="stylesheet"
       type="text/css"
@@ -20,59 +22,138 @@
     />
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/owl-carousel.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/cart.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/purchase.css" />
     <link rel="stylesheet" href="assets/css/tooplate-artxibition.css" />
   </head>
-  <body>
-    <!-- Preloader -->
+
+ <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+      <div class="preloader-inner">
+        <span class="dot"></span>
+        <div class="dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
+    <!-- ***** Pre HEader ***** -->
     <div class="pre-header">
-      <div class="container">
+      <div class="container pre-header-container">
         <div class="row">
           <div class="col text-end">
             <div class="text-button">
-              <a href="javascript:void(0);"
-                >Contact Us Now! <i class="fa fa-arrow-right"></i
-              ></a>
+              <a href="javascript:void(0);">
+                Contact Us Now! <i class="fa fa-arrow-right"></i>
+              </a>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Header -->
+    <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky">
-      <div class="container">
+      <div class="container pre-header-container">
         <div class="row">
           <div class="col-12">
             <nav class="main-nav">
+              <!-- Logo -->
               <a href="index-after-logged-in.html" class="logo">BEYS</a>
+
+              <!-- Menu -->
               <ul class="nav">
-                <li><a href="index-after-logged-in.html">Home</a></li>
+                <li>
+                  <a href="index-after-logged-in.html" class="active">Home</a>
+                </li>
                 <li><a href="events-after-logged-in.html">Events</a></li>
                 <li><a href="favorites.html">My Favorites</a></li>
-                <li><a href="cart.html" class="active">My Cart</a></li>
-                <li><a href="profile.html">My Profile</a></li>
+                <li><a href="cart.html">My Cart</a></li>
+                <li>
+                  <a href="profile.html">My Profile</a>
+                </li>
               </ul>
-              <a class="menu-trigger"><span>Menu</span></a>
+
+              <a class="menu-trigger">
+                <span>Menu</span>
+              </a>
+              <!-- ***** Menu End ***** -->
             </nav>
           </div>
         </div>
       </div>
     </header>
+    <!-- ***** Header Area End ***** -->
 
-    <!-- Banner -->
+    <!-- Main Content Start -->
     <div class="main-banner">
-      <div class="welcome-text">My Cart</div>
+      <div class="welcome-text">Event Details</div>
     </div>
+    <div class="step-indicator">
+      <ul class="steps">
+        <li class="step active">Select a Category</li>
+        <li class="step">Choose a Seat</li>
+        <li class="step">Payment</li>
+      </ul>
+    </div>
+    <div class="ticket-details-page">
+      <div class="container">
+        <div class="row">
+          <!-- Kategori Seçim Alanı -->
+          <div class="col-lg-6">
+            <h4>Choose a Category</h4>
+            <p class="category-subtitle">
+              Select the ticket category you'd like to purchase.
+            </p>
 
-    <!-- Cart Content -->
-    <div class="container my-5">
-      <div id="cart-items" class="cart-items"></div>
-      <div class="cart-summary">
-        <p>Total Quantity: <span id="cart-total-quantity">0</span></p>
-        <p>Total Price: <span id="cart-total-price">$0.00</span></p>
+            <div class="category-box">
+              <div class="category-info">
+                <h5>Category 2</h5>
+                <p>₺250.00</p>
+              </div>
+              <button class="btn continue-btn" data-category="Category 2">
+                Continue
+              </button>
+            </div>
+
+            <div class="category-box">
+              <div class="category-info">
+                <h5>Category 1</h5>
+                <p>₺450.00</p>
+              </div>
+              <button class="btn continue-btn" data-category="Category 1">
+                Continue
+              </button>
+            </div>
+
+            <div class="category-box">
+              <div class="category-info">
+                <h5>VIP</h5>
+                <p>₺750.00</p>
+              </div>
+              <button class="btn continue-btn" data-category="VIP">
+                Continue
+              </button>
+            </div>
+          </div>
+
+          <!-- Seat Plan -->
+          <div
+            class="col-lg-6 d-flex align-items-center justify-content-center"
+          >
+            <img
+              src="assets/images/seat-plan.png"
+              alt="Seat Plan"
+              class="img-fluid"
+              style="max-width: 80%; border-radius: 10px"
+            />
+          </div>
+        </div>
       </div>
     </div>
+    <!-- Main Content End -->
 
     <!-- *** Footer *** -->
     <footer>
@@ -138,7 +219,7 @@
       </div>
     </footer>
 
-    <!-- JS -->
+    <!-- Scripts -->
     <script src="assets/js/jquery-2.1.0.min.js"></script>
     <script src="assets/js/popper.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
@@ -150,6 +231,21 @@
     <script src="assets/js/accordions.js"></script>
     <script src="assets/js/owl-carousel.js"></script>
     <script src="assets/js/quantity.js"></script>
-    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/custom.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const continueButtons = document.querySelectorAll(".continue-btn");
+
+        continueButtons.forEach((btn) => {
+          btn.addEventListener("click", function (e) {
+            e.preventDefault();
+            const category = btn.getAttribute("data-category");
+            sessionStorage.setItem("selectedCategory", category);
+            window.location.href = "cart-2-after-logged-in.html";
+          });
+        });
+      });
+    </script>
   </body>
 </html>

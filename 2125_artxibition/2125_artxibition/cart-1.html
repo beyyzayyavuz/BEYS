@@ -12,33 +12,21 @@
       href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
       rel="stylesheet"
     />
+    <title>BEYS - Select Ticket Category</title>
 
-    <title>BEYS Home Page</title>
-
-    <!-- Additional CSS Files -->
+    <!-- CSS Files -->
     <link
       rel="stylesheet"
       type="text/css"
       href="assets/css/bootstrap.min.css"
     />
-
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css" />
-
     <link rel="stylesheet" type="text/css" href="assets/css/owl-carousel.css" />
-
+    <link rel="stylesheet" type="text/css" href="assets/css/purchase.css" />
     <link rel="stylesheet" href="assets/css/tooplate-artxibition.css" />
-
-    <!--
-
-Tooplate 2125 ArtXibition
-
-https://www.tooplate.com/view/2125-artxibition
-
--->
   </head>
 
-  <body>
-    <!-- ***** Preloader Start ***** -->
+ <!-- ***** Preloader Start ***** -->
     <div id="js-preloader" class="js-preloader">
       <div class="preloader-inner">
         <span class="dot"></span>
@@ -51,12 +39,12 @@ https://www.tooplate.com/view/2125-artxibition
     </div>
     <!-- ***** Preloader End ***** -->
 
+    <!-- ***** Pre HEader ***** -->
     <div class="pre-header">
-      <div class="container">
+      <div class="container pre-header-container">
         <div class="row">
           <div class="col text-end">
             <div class="text-button">
-              <!-- TODO: Burası yapılacak, (contact.html) -->
               <a href="javascript:void(0);">
                 Contact Us Now! <i class="fa fa-arrow-right"></i>
               </a>
@@ -68,29 +56,28 @@ https://www.tooplate.com/view/2125-artxibition
 
     <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky">
-      <div class="container">
+      <div class="container pre-header-container">
         <div class="row">
           <div class="col-12">
             <nav class="main-nav">
               <!-- Logo -->
-              <a href="index-after-logged-in.html" class="logo">BEYS</a>
+              <a href="index.html" class="logo">BEYS</a>
 
               <!-- Menu -->
               <ul class="nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html">Events</a></li>
                 <li>
-                  <a href="index-after-logged-in.html" class="active">Home</a>
-                </li>
-                <li><a href="events-after-logged-in.html">Events</a></li>
-                <li><a href="favorites.html">My Favorites</a></li>
-                <li><a href="cart.html">My Cart</a></li>
-                <li>
-                  <a href="profile.html">My Profile</a>
+                  <a href="login.html" class="custom-login-nav">
+                    <span class="nav-login-text">Login</span>
+                  </a>
                 </li>
               </ul>
 
               <a class="menu-trigger">
                 <span>Menu</span>
               </a>
+              <!-- ***** Menu End ***** -->
             </nav>
           </div>
         </div>
@@ -98,37 +85,75 @@ https://www.tooplate.com/view/2125-artxibition
     </header>
     <!-- ***** Header Area End ***** -->
 
-    <!-- ***** Main Banner Area Start ***** -->
+    <!-- Main Content Start -->
     <div class="main-banner">
-      <div class="welcome-text">Welcome to BEYS</div>
+      <div class="welcome-text">Event Details</div>
     </div>
-    <!-- ***** Main Banner Area End ***** -->
+    <div class="step-indicator">
+      <ul class="steps">
+        <li class="step active">Select a Category</li>
+        <li class="step">Choose a Seat</li>
+        <li class="step">Payment</li>
+      </ul>
+    </div>
+    <div class="ticket-details-page">
+      <div class="container">
+        <div class="row">
+          <!-- Kategori Seçim Alanı -->
+          <div class="col-lg-6">
+            <h4>Choose a Category</h4>
+            <p class="category-subtitle">
+              Select the ticket category you'd like to purchase.
+            </p>
 
-    <!-- *** Just For You Slider *** -->
-    <section class="venue-tickets just-for-you-events-slider">
-      <div class="container-fluid p-0">
-        <div class="section-heading">
-          <h2>Just For You</h2>
+            <div class="category-box">
+              <div class="category-info">
+                <h5>Category 2</h5>
+                <p>₺250.00</p>
+              </div>
+              <button class="btn continue-btn" data-category="Category 2">
+                Continue
+              </button>
+            </div>
+
+            <div class="category-box">
+              <div class="category-info">
+                <h5>Category 1</h5>
+                <p>₺450.00</p>
+              </div>
+              <button class="btn continue-btn" data-category="Category 1">
+                Continue
+              </button>
+            </div>
+
+            <div class="category-box">
+              <div class="category-info">
+                <h5>VIP</h5>
+                <p>₺750.00</p>
+              </div>
+              <button class="btn continue-btn" data-category="VIP">
+                Continue
+              </button>
+            </div>
+          </div>
+
+          <!-- Seat Plan -->
+          <div
+            class="col-lg-6 d-flex align-items-center justify-content-center"
+          >
+            <img
+              src="assets/images/seat-plan.png"
+              alt="Seat Plan"
+              class="img-fluid"
+              style="max-width: 80%; border-radius: 10px"
+            />
+          </div>
         </div>
-        <div class="owl-carousel owl-theme" id="just-for-you-events"></div>
       </div>
-    </section>
+    </div>
+    <!-- Main Content End -->
 
-    <!-- Upcoming Events -->
-    <section class="venue-tickets upcoming-events-slider">
-      <div class="container-fluid p-0">
-        <div class="section-heading">
-          <h2>Upcoming Events</h2>
-        </div>
-        <div class="owl-carousel owl-theme" id="upcoming-events"></div>
-      </div>
-      <button class="fav-btn">
-        <i class="fa fa-heart-o"></i>
-      </button>
-    </section>
-
-    <!-- *** Footer *** -->
-    <!-- *** Footer *** -->
+      <!-- *** Footer *** -->
     <footer>
       <div class="container">
         <div class="row">
@@ -192,14 +217,11 @@ https://www.tooplate.com/view/2125-artxibition
       </div>
     </footer>
 
-    <!-- jQuery -->
-    <script src="assets/js/jquery-2.1.0.min.js"></script>
 
-    <!-- Bootstrap -->
+    <!-- Scripts -->
+    <script src="assets/js/jquery-2.1.0.min.js"></script>
     <script src="assets/js/popper.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
-
-    <!-- Plugins -->
     <script src="assets/js/scrollreveal.min.js"></script>
     <script src="assets/js/waypoints.min.js"></script>
     <script src="assets/js/jquery.counterup.min.js"></script>
@@ -207,61 +229,21 @@ https://www.tooplate.com/view/2125-artxibition
     <script src="assets/js/mixitup.js"></script>
     <script src="assets/js/accordions.js"></script>
     <script src="assets/js/owl-carousel.js"></script>
-    <script src="assets/js/cart.js"></script>
-    <script src="assets/js/favorites.js"></script>
-
-    <!-- Global Init -->
+    <script src="assets/js/quantity.js"></script>
     <script src="assets/js/custom.js"></script>
-    <script src="assets/js/events.js"></script>
-    <script src="assets/js/events.js"></script>
+
     <script>
-      function initSliders() {
-        $("#upcoming-events").owlCarousel({
-          items: 2,
-          loop: true,
-          margin: 25,
-          autoplay: true,
-          autoplayTimeout: 6000,
-          autoplayHoverPause: true,
-          nav: true,
-          dots: true,
-          responsive: {
-            0: { items: 1 },
-            600: { items: 2 },
-            900: { items: 3 },
-            1200: { items: 4 },
-          },
+      document.addEventListener("DOMContentLoaded", () => {
+        const continueButtons = document.querySelectorAll(".continue-btn");
+
+        continueButtons.forEach((btn) => {
+          btn.addEventListener("click", function (e) {
+            e.preventDefault();
+            const category = btn.getAttribute("data-category");
+            sessionStorage.setItem("selectedCategory", category);
+            window.location.href = "cart-2.html";
+          });
         });
-        $("#last-time-offers").owlCarousel({
-          items: 3,
-          loop: true,
-          margin: 25,
-          autoplay: true,
-          autoplayTimeout: 4000,
-          autoplayHoverPause: true,
-          nav: true,
-          dots: true,
-          responsive: {
-            0: { items: 1 },
-            600: { items: 2 },
-            900: { items: 3 },
-            1200: { items: 4 },
-          },
-        });
-      }
-      $("#just-for-you-events").owlCarousel({
-        items: 3,
-        loop: true,
-        margin: 25,
-        autoplay: true,
-        nav: true,
-        dots: true,
-        responsive: {
-          0: { items: 1 },
-          600: { items: 2 },
-          900: { items: 3 },
-          1200: { items: 4 },
-        },
       });
     </script>
   </body>

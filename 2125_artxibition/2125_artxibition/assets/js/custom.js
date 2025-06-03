@@ -150,6 +150,24 @@ $(document).ready(function () {
     loop: true,
     margin: 25 /* Az bir boşluk bırak */,
     autoplay: false,
+    autoplayTimeout: 6000,
+    autoplayHoverPause: true, // Hover olunca durur
+    responsive: {
+      0: { items: 1 },
+      600: { items: 2 },
+      900: { items: 3 },
+      1200: { items: 4 },
+    },
+  });
+});
+$(document).ready(function () {
+  $(".just-for-you-events-slider .owl-carousel").owlCarousel({
+    items: 4,
+    loop: true,
+    margin: 25,
+    autoplay: true, // İstersen true/false yapabilirsin
+    autoplayTimeout: 6000,
+    autoplayHoverPause: true,
     nav: true,
     dots: true,
     responsive: {

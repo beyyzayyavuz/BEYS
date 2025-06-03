@@ -840,107 +840,133 @@ Venues & Tickets
 */
 
 /* Genel kutu yapısı - slider için ayarlanmış */
+/*OHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH BURADAN AYARLANIYORMUŞ TICKET GETTING FIT TO THE PAGE*/
+/* Ana Kapsayıcı */
 .venue-tickets {
   margin: 40px auto;
   padding: 0 15px;
-  max-width: 1200px;
+  max-width: 80%;
+}
+.venue-tickets.all-events-slider {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
 }
 
+/* Kartlar */
 .venue-tickets .owl-carousel .venue-item {
-  background-color: #656c74;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  margin: 15px;
-  text-align: center;
-  color: #fff;
-
-  transition: transform 0.3s ease;
+  flex: 1 0 28%; /* 3'lü dizilime uygun */
+  max-width: 320px; /* 3 kart yan yana sığacak şekilde */
+  margin: 10px; /* Kenar boşluklarını azalt */
 }
 
 .venue-tickets .owl-carousel .venue-item:hover {
-  transform: scale(1.03);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Resim boyutu - sabit ve responsive */
+/* Resim */
+.venue-item .thumb {
+  position: relative;
+}
+
 .venue-item .thumb img {
   width: 100%;
-  height: 250px;
+  height: 220px;
   object-fit: cover;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
 
-/* İçerik alanı */
+/* Fiyat Bandı */
+.venue-item .thumb .price {
+  background-color: rgba(101, 108, 116, 0.9);
+  padding: 12px 18px;
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  border-radius: 4px;
+}
+
+.venue-item .thumb .price span {
+  color: #fff;
+  font-size: 14px;
+}
+
+.venue-item .thumb .price span em {
+  font-size: 20px;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* İçerik */
 .venue-item .down-content {
-  padding: 35px;
-  background-color: #2d2d3027;
+  padding: 30px;
+  background-color: #fafafa;
+}
+
+.venue-item .down-content span {
+  font-size: 14px;
+  color: #656c74;
+  font-weight: 700;
 }
 
 .venue-item .down-content h4 {
-  font-size: 18px;
-  font-weight: 600;
-  margin: 12px 0 8px;
-}
-
-.venue-item .down-content p {
-  font-size: 14px;
-  font-weight: 300;
-  color: #dddddd9c;
-  margin-bottom: 10px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #2a2a2a;
+  margin-top: 10px;
+  margin-bottom: 15px;
 }
 
 .venue-item .down-content ul {
   list-style: none;
   padding: 0;
-  margin: 0 0 10px;
+  margin: 0 0 15px;
 }
 
 .venue-item .down-content ul li {
-  display: inline-block;
   font-size: 14px;
-  margin-right: 10px;
+  color: #2a2a2a;
+  font-weight: 300;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
 }
 
-.venue-item .down-content .price {
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 8px 12px;
-  border-radius: 4px;
-  font-size: 14px;
-  display: inline-block;
-  margin-top: 10px;
+.venue-item .down-content ul li i {
+  color: #7c838b;
+  margin-right: 8px;
 }
 
-.venue-item .down-content .price span em {
-  font-size: 18px;
-  font-weight: bold;
-  color: #f87e05;
+/* Buton */
+.venue-item .down-content .main-white-button {
+  display: flex;
+  justify-content: center;
 }
 
-/* Purchase Tickets Butonu */
-.venue-item .main-white-button a {
+.venue-item .down-content .main-white-button a {
   background-color: #f87e05;
   color: #fff;
-  padding: 8px 16px;
+  padding: 12px 18px;
   border-radius: 4px;
   font-weight: bold;
   text-decoration: none;
   display: inline-block;
-  margin-top: 10px;
   transition: background-color 0.3s ease;
 }
 
-.venue-item .main-white-button a:hover {
+.venue-item .down-content .main-white-button a:hover {
   background-color: #ff8c00;
 }
 
-/*
 ---------------------------------------------
-Coming Events
----------------------------------------------
-*/
-
-.coming-events {
+  Coming
+  Events
+  ---------------------------------------------
+  */
+  .coming-events {
   background-color: #656c74;
   padding: 120px 0px;
   position: relative;
@@ -1921,79 +1947,128 @@ Tickets Page
   margin-top: 100px;
   margin-bottom: 80px;
 }
+.tickets-page .spacer {
+  margin-top: 100px;
+  margin-bottom: 80px;
+}
 
+/* ================================
+   TICKETS PAGE - CARD YENİ TASARIM
+================================ */
+
+/* Kart genel yapısı */
+.tickets-page .ticket-item {
+  background-color: #fafafa;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  margin-bottom: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tickets-page .ticket-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Resim ve fiyat bandı */
 .tickets-page .ticket-item .thumb {
   position: relative;
 }
 
 .tickets-page .ticket-item .thumb img {
   width: 100%;
-  overflow: hidden;
+  height: 220px;
+  object-fit: cover;
 }
 
 .tickets-page .ticket-item .thumb .price {
   background-color: rgba(101, 108, 116, 0.9);
   display: inline-block;
-  padding: 20px;
+  padding: 12px 18px;
   position: absolute;
-  left: 30px;
-  bottom: 30px;
+  left: 20px;
+  bottom: 20px;
+  border-radius: 4px;
 }
 
 .tickets-page .ticket-item .thumb .price span {
   color: #fff;
   font-size: 14px;
-  line-height: 25px;
 }
 
 .tickets-page .ticket-item .thumb .price span em {
   font-weight: 700;
-  font-size: 20px;
+  font-size: 18px;
   font-style: normal;
 }
 
-.tickets-page .ticket-item {
-  margin-bottom: 30px;
-}
-
+/* Kart içerik alanı */
 .tickets-page .ticket-item .down-content {
   background-color: #fafafa;
-  padding: 30px;
+  padding: 25px;
+  text-align: left;
 }
 
 .tickets-page .ticket-item .down-content span {
   font-size: 14px;
-  color: #656c74;
+  color: #7c838b;
   font-weight: 700;
 }
 
 .tickets-page .ticket-item .down-content h4 {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 700;
   color: #2a2a2a;
   margin-top: 10px;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
+}
+
+.tickets-page .ticket-item .down-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 15px;
 }
 
 .tickets-page .ticket-item .down-content ul li {
   font-size: 14px;
   color: #2a2a2a;
   font-weight: 300;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .tickets-page .ticket-item .down-content ul li i {
   color: #7c838b;
-  margin-right: 10px;
-  width: 15px;
-  height: 25px;
-  float: left;
+  margin-right: 8px;
 }
 
+/* Buton */
+.tickets-page .ticket-item .down-content .main-dark-button a {
+  display: inline-block;
+  font-size: 14px;
+  padding: 12px 18px;
+  background-color: #f87e05;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  text-transform: capitalize;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.tickets-page .ticket-item .down-content .main-dark-button a:hover {
+  background-color: #ff8c00;
+}
 .tickets-page .ticket-item .down-content .main-dark-button {
+  display: flex;
+  justify-content: center;
   margin-top: 30px;
 }
 
+/* Pagination (Aynı kalsın) */
 .tickets-page .pagination ul {
   text-align: center;
   width: 100%;
@@ -2632,36 +2707,7 @@ responsive
   position: relative;
   top: -8px;
 }
-.cart-item button.remove-item {
-  background-color: #ff4d4d;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-  border-radius: 4px;
-}
 
-.cart-item button.remove-item:hover {
-  background-color: #cc0000;
-}
-.cart-buttons {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.cart-buttons button {
-  background-color: #333;
-  color: white;
-  border: none;
-  padding: 6px 12px;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-.cart-buttons button:hover {
-  background-color: #555;
-}
 .impact-zone {
   background-color: #f9f9f9;
   text-align: center;
@@ -2766,4 +2812,56 @@ responsive
 .beys-info .stat-box p {
   font-size: 14px;
   font-weight: 300;
+}
+.owl-carousel .venue-item {
+  width: 350px !important;
+  display: inline-block !important;
+  vertical-align: top;
+}
+
+.venue-item {
+  max-width: 600px; /* İsteğe bağlı */
+}
+
+.venue-tickets .container-fluid {
+  padding: 0 10px;
+}
+.venue-item {
+  position: relative;
+}
+
+/*FAVORİLER KISMI FAVORİ BUTONU FİZİKSEL ÖZELLİK AYARLARI */
+.fav-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(200, 200, 200, 0.822); /* Gri arkaplan, şeffaflık */
+  border: none;
+  border-radius: 10px; /* Oval görünüm */
+  padding: 6px 10px; /* Dikey ve yatay boşluk */
+  cursor: pointer;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.fav-btn i {
+  font-size: 20px; /* Kalbi biraz büyüt */
+  color: rgb(243, 45, 10);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.fav-btn.active i {
+  color: rgb(243, 45, 10);
+  transform: scale(1.1);
+}
+
+.venue-item:hover .fav-btn {
+  opacity: 1;
+}
+
+.fav-btn.active {
+  opacity: 1 !important;
 }

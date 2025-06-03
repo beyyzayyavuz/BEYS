@@ -1,38 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const addToCartBtn = document.getElementById("add-to-cart-btn");
-  const cartItemsEl = document.getElementById("cart-items"); // ÖNEMLİ: Cart HTML'inde #cart-items olmalı
+  const cartItemsEl = document.getElementById("cart-items");
   const cartTotalQuantityEl = document.getElementById("cart-total-quantity");
   const cartTotalPriceEl = document.getElementById("cart-total-price");
 
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
 
-  // Add to Cart İşlemi
-  if (addToCartBtn) {
-    addToCartBtn.addEventListener("click", function (e) {
-      e.preventDefault();
-      const quantityInput = document.querySelector(".input-text.qty");
-      const quantity = parseInt(quantityInput.value) || 1;
-      const ticketPrice = 65;
-      const total = quantity * ticketPrice;
-
-      const cartItem = {
-        event: "Sunny Hill Festival",
-        quantity: quantity,
-        price: ticketPrice,
-        total: total,
-      };
-
-      cart.push(cartItem);
-      localStorage.setItem("cart", JSON.stringify(cart));
-
-      alert("Item added to cart!");
-    });
-  }
-
-  // Cart'ı Render Eden Fonksiyon
+  // Cart'ı render eden fonksiyon
   function renderCart() {
     if (!cartItemsEl) return;
-    cartItemsEl.innerHTML = ""; // Eskiyi temizle
+    cartItemsEl.innerHTML = "";
 
     let totalQuantity = 0;
     let totalPrice = 0;
@@ -44,7 +20,12 @@ document.addEventListener("DOMContentLoaded", function () {
           <p>Quantity: ${item.quantity}</p>
           <p>Price: $${item.price}</p>
           <p>Total: $${item.total}</p>
-          <button class="remove-item">Remove from Cart</button>
+          <div class="cart-buttons">
+            <button class="remove-item">Remove from Cart</button>
+            <div class="main-dark-button">
+              <a href="#" class="purchase-item" data-index="${index}">Purchase Tickets</a>
+            </div>
+          </div>
           <hr>
         </div>
       `;
@@ -53,25 +34,64 @@ document.addEventListener("DOMContentLoaded", function () {
       totalPrice += item.total;
     });
 
-    if (cartTotalQuantityEl) cartTotalQuantityEl.textContent = totalQuantity;
-    if (cartTotalPriceEl)
-      cartTotalPriceEl.textContent = `$${totalPrice.toFixed(2)}`;
+    cartTotalQuantityEl.textContent = totalQuantity;
+    cartTotalPriceEl.textContent = `$${totalPrice.toFixed(2)}`;
   }
 
-  // Remove İşlemi
-  if (cartItemsEl) {
-    cartItemsEl.addEventListener("click", function (e) {
-      if (e.target.classList.contains("remove-item")) {
-        const index = parseInt(
-          e.target.closest(".cart-item").getAttribute("data-index")
-        );
+  // Add-to-Cart ve Remove işlemleri
+  document.body.addEventListener("click", function (e) {
+    // Add to Cart
+    if (e.target.classList.contains("add-to-cart-btn")) {
+      e.preventDefault();
+      const card = e.target.closest(".venue-item, .right-content");
+      if (!card) return;
+
+      const eventName =
+        card.querySelector("h4")?.textContent || "Unnamed Event";
+      const eventPrice = 65;
+
+      const quantityInput = card.querySelector(".input-text.qty");
+      const quantity = quantityInput ? parseInt(quantityInput.value) || 1 : 1;
+
+      const total = quantity * eventPrice;
+
+      const cartItem = {
+        event: eventName,
+        quantity: quantity,
+        price: eventPrice,
+        total: total,
+      };
+
+      cart.push(cartItem);
+      sessionStorage.setItem("cart", JSON.stringify(cart));
+      alert(`${eventName} added to cart!`);
+      renderCart();
+    }
+
+    // Remove from Cart
+    if (e.target.classList.contains("remove-item")) {
+      const index = parseInt(
+        e.target.closest(".cart-item")?.getAttribute("data-index")
+      );
+      if (!isNaN(index)) {
         cart.splice(index, 1);
-        localStorage.setItem("cart", JSON.stringify(cart));
-        renderCart(); // Sayfayı yenilemeden DOM'u güncelle
+        sessionStorage.setItem("cart", JSON.stringify(cart));
+        renderCart();
       }
-    });
-  }
+    }
 
-  // Sayfa açıldığında sepeti yükle
+    // Purchase Tickets
+    if (e.target.classList.contains("purchase-item")) {
+      e.preventDefault();
+      const index = parseInt(e.target.getAttribute("data-index"));
+      if (!isNaN(index)) {
+        const selectedEvent = cart[index];
+        sessionStorage.setItem("selectedEventId", selectedEvent.event);
+        alert(`Proceeding to purchase for: ${selectedEvent.event}`);
+        window.location.href = "cart-1-after-logged-in.html"; // Yönlendirme sayfan
+      }
+    }
+  });
+
   renderCart();
 });

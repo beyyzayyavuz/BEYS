@@ -1,0 +1,52 @@
+.cart-item {
+  background: #fafafa;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.cart-item h4 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.cart-item p {
+  font-size: 14px;
+  margin: 3px 0;
+}
+
+.cart-buttons {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.cart-buttons .remove-item,
+.cart-buttons .purchase-item {
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 14px;
+  color: #fff;
+}
+
+/* Remove (Kırmızı) */
+.cart-buttons .remove-item {
+  background-color: #ff4d4d;
+}
+
+.cart-buttons .remove-item:hover {
+  background-color: #cc0000;
+}
+
+/* Purchase (Turuncu) */
+.cart-buttons .purchase-item {
+  background-color: #f87e05;
+}
+
+.cart-buttons .purchase-item:hover {
+  background-color: #ff8c00;
+}

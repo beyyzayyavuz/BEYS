@@ -57,3 +57,38 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+// Form submit'leri için ortak yönlendirme
+const loginFormEl = document.querySelector(".form-box.login form");
+const registerFormEl = document.querySelector(".form-box.register form");
+const guestFormEl = document.querySelector(".form-box.guest form");
+
+function handleRedirectAfterLogin() {
+  const redirect =
+    sessionStorage.getItem("redirectAfterLogin") ||
+    "index-after-logged-in.html";
+  window.location.href = redirect;
+}
+
+if (loginFormEl) {
+  loginFormEl.addEventListener("submit", function (e) {
+    e.preventDefault();
+    sessionStorage.setItem("isLoggedIn", "true");
+    handleRedirectAfterLogin();
+  });
+}
+
+if (registerFormEl) {
+  registerFormEl.addEventListener("submit", function (e) {
+    e.preventDefault();
+    sessionStorage.setItem("isLoggedIn", "true");
+    handleRedirectAfterLogin();
+  });
+}
+
+if (guestFormEl) {
+  guestFormEl.addEventListener("submit", function (e) {
+    e.preventDefault();
+    sessionStorage.setItem("isLoggedIn", "guest");
+    handleRedirectAfterLogin();
+  });
+}

@@ -94,47 +94,42 @@ https://www.tooplate.com/view/2125-artxibition
         <div class="row">
           <div class="col-lg-8">
             <div class="left-image">
-              <img src="assets/images/ticket-details.jpg" alt="" />
+              <img src="" alt="Event Image" id="event-image" />
             </div>
           </div>
           <div class="col-lg-4">
             <div class="right-content">
-              <h4>Sunny Hill Festival</h4>
-              <span>240 Tickets still available</span>
-              <ul>
-                <li><i class="fa fa-clock-o"></i> Thursday 18:00 to 22:00</li>
-                <li>
-                  <i class="fa fa-map-marker"></i>Copacabana Beach, Rio de
-                  Janeiro
-                </li>
+              <h4 id="event-title"></h4>
+              <span id="event-availability"></span>
+              <ul id="event-details-list">
+                <!-- Tarih ve lokasyon burada JS ile eklenecek -->
               </ul>
               <div class="quantity-content">
                 <div class="left-content">
                   <h6>Standard Ticket</h6>
-                  <p>$65 per ticket</p>
+                  <p id="event-price"></p>
                 </div>
                 <div class="right-content">
                   <div class="quantity buttons_added">
-                    <input type="button" value="-" class="minus" /><input
+                    <input type="button" value="-" class="minus" />
+                    <input
                       type="number"
                       step="1"
                       min="1"
-                      max=""
                       name="quantity"
                       value="1"
                       title="Qty"
                       class="input-text qty text"
                       size="4"
-                      pattern=""
-                      inputmode=""
-                    /><input type="button" value="+" class="plus" />
+                    />
+                    <input type="button" value="+" class="plus" />
                   </div>
                 </div>
               </div>
               <div class="total">
-                <h4>Total: $210.00</h4>
+                <h4 id="event-total-price"></h4>
                 <div class="main-dark-button">
-                  <a href="#" id="add-to-cart-btn">Add to Cart</a>
+                  <a href="#" class="add-to-cart-btn">Add to Cart</a>
                 </div>
                 <div class="main-dark-button">
                   <a href="#">Purchase Tickets</a>
@@ -149,68 +144,22 @@ https://www.tooplate.com/view/2125-artxibition
       </div>
     </div>
 
-    <!-- *** Subscribe *** -->
-    <div class="subscribe">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4">
-            <h4>Subscribe Our Newsletter:</h4>
-          </div>
-          <div class="col-lg-8">
-            <form id="subscribe" action="" method="get">
-              <div class="row">
-                <div class="col-lg-9">
-                  <fieldset>
-                    <input
-                      name="email"
-                      type="text"
-                      id="email"
-                      pattern="[^ @]*@[^ @]*"
-                      placeholder="Your Email Address"
-                      required=""
-                    />
-                  </fieldset>
-                </div>
-                <div class="col-lg-3">
-                  <fieldset>
-                    <button
-                      type="submit"
-                      id="form-submit"
-                      class="main-dark-button"
-                    >
-                      Submit
-                    </button>
-                  </fieldset>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- *** Footer *** -->
     <footer>
       <div class="container">
         <div class="row">
           <div class="col-lg-4">
             <div class="address">
-              <h4>Sunny Hill Festival Address</h4>
-              <span
-                >5 College St NW, <br />Norcross, GA 30071<br />United
-                States</span
-              >
+              <h4>BEYS Ticketing Office</h4>
+              <span>123 Event Avenue,<br />Istanbul, Türkiye<br />Europe</span>
             </div>
           </div>
           <div class="col-lg-4">
             <div class="links">
-              <h4>Useful Links</h4>
+              <h4>Discover More</h4>
               <ul>
-                <li><a href="#">Info</a></li>
-                <li><a href="#">Venues</a></li>
-                <li><a href="#">Guides</a></li>
-                <li><a href="#">Videos</a></li>
-                <li><a href="#">Outreach</a></li>
+                <li><a href="#">Events</a></li>
+                <li><a href="#">Contact Us</a></li>
               </ul>
             </div>
           </div>
@@ -218,54 +167,23 @@ https://www.tooplate.com/view/2125-artxibition
             <div class="hours">
               <h4>Open Hours</h4>
               <ul>
-                <li>Mon to Fri: 10:00 AM to 8:00 PM</li>
+                <li>Mon to Fri: 8:00 AM to 6:00 PM</li>
                 <li>Sat - Sun: 11:00 AM to 4:00 PM</li>
                 <li>Holidays: Closed</li>
               </ul>
             </div>
           </div>
-          <div class="col-lg-12">
-            <div class="under-footer">
-              <div class="row">
-                <div class="col-lg-6">
-                  <p>São Conrado, Rio de Janeiro</p>
-                </div>
-                <div class="col-lg-6">
-                  <p class="copyright">
-                    Copyright 2021 ArtXibition Company
 
-                    <br />Design:
-                    <a
-                      rel="nofollow"
-                      href="https://www.tooplate.com"
-                      target="_parent"
-                      >Tooplate</a
-                    >
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
           <div class="col-lg-12">
             <div class="sub-footer">
               <div class="row">
                 <div class="col-lg-3">
-                  <div class="logo">
-                    <span>Art<em>Xibition</em></span>
+                  <div class="main-nav">
+                    <a href="index.html" class="logo">BEYS</a>
                   </div>
                 </div>
-                <div class="col-lg-6">
-                  <div class="menu">
-                    <ul>
-                      <li><a href="index.html" class="active">Home</a></li>
-                      <li><a href="about.html">About Us</a></li>
-                      <li><a href="rent-venue.html">Rent Venue</a></li>
-                      <li><a href="shows-events.html">Shows & Events</a></li>
-                      <li><a href="tickets.html">Tickets</a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="col-lg-3">
+
+                <div class="col-lg-9">
                   <div class="social-links">
                     <ul>
                       <li>
@@ -289,7 +207,6 @@ https://www.tooplate.com/view/2125-artxibition
         </div>
       </div>
     </footer>
-
     <!-- jQuery -->
     <script src="assets/js/jquery-2.1.0.min.js"></script>
 
@@ -310,5 +227,156 @@ https://www.tooplate.com/view/2125-artxibition
     <!-- Global Init -->
     <script src="assets/js/custom.js"></script>
     <script src="assets/js/cart.js"></script>
+    <script src="assets/js/events.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const eventId = sessionStorage.getItem("selectedEventId");
+        const events = [
+          {
+            id: "1",
+            title: "Radio City Musical Hall",
+            desc: "Amazing show...",
+            image: "assets/images/venue-01.jpg",
+            capacity: 250,
+            audience: 500,
+            date: "Thursday 18:00 to 22:00",
+            location: "Copacabana Beach, Rio de Janeiro",
+            price: 65,
+          },
+          {
+            id: "2",
+            title: "Madison Square Garden",
+            desc: "Live in NY...",
+            image: "assets/images/venue-02.jpg",
+            capacity: 450,
+            audience: 650,
+            date: "Wednesday 20:00 to 23:00",
+            location: "Times Square, NY",
+            price: 80,
+          },
+          {
+            id: "3",
+            title: "Radio City Musical Hall",
+            desc: "Amazing show...",
+            image: "assets/images/venue-03.jpg",
+            capacity: 250,
+            audience: 500,
+            date: "Thursday 18:00 to 22:00",
+            location: "Copacabana Beach, Rio de Janeiro",
+            price: 65,
+          },
+          {
+            id: "4",
+            title: "Madison Square Garden",
+            desc: "Live in NY...",
+            image: "assets/images/venue-04.jpg",
+            capacity: 450,
+            audience: 650,
+            date: "Thursday 18:00 to 22:00",
+            location: "Copacabana Beach, Rio de Janeiro",
+            price: 65,
+          },
+          {
+            id: "5",
+            title: "Sunset Beach Party",
+            desc: "Beach vibes...",
+            image: "assets/images/venue-05.jpg",
+            capacity: 300,
+            audience: 400,
+            date: "Thursday 18:00 to 22:00",
+            location: "Copacabana Beach, Rio de Janeiro",
+            price: 65,
+          },
+          {
+            id: "6",
+            title: "Midnight Jazz",
+            desc: "Smooth jazz night...",
+            image: "assets/images/venue-06.jpg",
+            capacity: 150,
+            audience: 350,
+            date: "Thursday 18:00 to 22:00",
+            location: "Copacabana Beach, Rio de Janeiro",
+            price: 65,
+          },
+          {
+            id: "7",
+            title: "VIP Jazz Night",
+            desc: "Exclusive show for members only.",
+            image: "assets/images/ticket-01.jpg",
+            capacity: 100,
+            audience: 120,
+            date: "Thursday 18:00 to 22:00",
+            location: "Copacabana Beach, Rio de Janeiro",
+            price: 65,
+          },
+          {
+            id: "8",
+            title: "Classical Vibes",
+            desc: "Timeless classics for you.",
+            image: "assets/images/venue-05.jpg",
+            capacity: 150,
+            audience: 200,
+            date: "Thursday 18:00 to 22:00",
+            location: "Copacabana Beach, Rio de Janeiro",
+            price: 65,
+          },
+          {
+            id: "9",
+            title: "Underground Beats",
+            desc: "Feel the rhythm of the night.",
+            image: "assets/images/venue-06.jpg",
+            capacity: 200,
+            audience: 180,
+            date: "Thursday 18:00 to 22:00",
+            location: "Copacabana Beach, Rio de Janeiro",
+            price: 65,
+          },
+        ];
+        /*ID BAŞTA INTEGER OLARAK VARDI SONRA BU KISIM İÇİN STRING YAPTIK*/
+
+        const event = events.find((e) => e.id === eventId);
+        if (!event) return;
+
+        // Sayfayı doldur
+        document.getElementById("event-image").src = event.image;
+        document.getElementById("event-title").textContent = event.title;
+        document.getElementById(
+          "event-availability"
+        ).textContent = `${event.capacity} Tickets still available`;
+        document.getElementById("event-details-list").innerHTML = `
+        <li><i class="fa fa-clock-o"></i> ${event.date}</li>
+        <li><i class="fa fa-map-marker"></i> ${event.location}</li>
+      `;
+        document.getElementById(
+          "event-price"
+        ).textContent = `$${event.price} per ticket`;
+
+        const qtyInput = document.querySelector(".input-text.qty");
+        const totalPriceEl = document.getElementById("event-total-price");
+
+        function updateTotal() {
+          const qty = parseInt(qtyInput.value) || 1;
+          const total = qty * event.price;
+          totalPriceEl.textContent = `Total: $${total}`;
+        }
+
+        qtyInput.addEventListener("input", updateTotal);
+        updateTotal();
+      });
+      document.addEventListener("DOMContentLoaded", () => {
+        const continueButtons = document.querySelectorAll(
+          ".main-dark-button a"
+        );
+
+        continueButtons.forEach((btn) => {
+          btn.addEventListener("click", function (e) {
+            e.preventDefault();
+            const category = btn.getAttribute("data-category") || "Tribune";
+            sessionStorage.setItem("selectedCategory", category);
+            window.location.href = "cart-1-after-logged-in.html";
+          });
+        });
+      });
+    </script>
   </body>
 </html>

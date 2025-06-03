@@ -1,0 +1,454 @@
+.category-box {
+  position: relative;
+  padding: 20px;
+  padding-bottom: 50px; /* Buton için alt boşluk */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  background-color: #f9f9f9;
+  min-height: 120px;
+  overflow: hidden; /* Buton taşmasını engelle */
+}
+
+.category-info h5 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.category-info p {
+  margin: 5px 0 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 120px; /* Sabit genişlik */
+  height: 40px; /* Sabit yükseklik */
+  background-color: #ff5622cb;
+  border: none;
+  border-radius: 8px 0 8px 0; /* Sadece sağ alt köşede radius */
+  color: #fff;
+  font-weight: bold;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.btn:hover {
+  background-color: #e64919b0;
+}
+.step-indicator {
+  margin: 30px 0;
+  text-align: center;
+}
+
+.step-indicator .steps {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.step-indicator .step {
+  font-weight: 600;
+  font-size: 16px;
+  color: #999;
+  position: relative;
+}
+
+.step-indicator .step::after {
+  content: "→";
+  margin: 0 10px;
+  color: #999;
+}
+
+.step-indicator .step:last-child::after {
+  content: "";
+}
+
+/* Aktif adım: Yazı rengi turuncu */
+.step-indicator .step.active {
+  color: #e64919b7;
+}
+
+/* Aktif adım: Üstte turuncu nokta */
+.step-indicator .step.active::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: #e64919b7;
+  border-radius: 50%;
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.category-subtitle {
+  color: #888; /* Açık gri */
+}
+.seat-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Satırlar arası boşluk */
+  margin-top: 20px;
+}
+
+.seat-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px; /* Koltuklar arası boşluk */
+}
+
+.seat {
+  width: 50px;
+  height: 50px;
+  background-color: #4caf50;
+  border-radius: 10px 10px 0 0; /* Sadece üst köşeler oval */
+  cursor: pointer;
+  text-align: center;
+  line-height: 50px;
+  font-weight: bold;
+  color: white;
+  font-size: 14px;
+  user-select: none;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.seat:hover {
+  transform: scale(1.1);
+}
+
+.seat.selected {
+  background-color: #ff5722;
+}
+
+.btn2 {
+  width: 100%;
+  height: 45px;
+  background-color: #ff5722;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn2:hover {
+  background-color: #e64a19;
+}
+
+.ticket-summary-box {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+  flex: 0 0 300px; /* Sabit genişlikte tut */
+  max-width: 300px; /* Taşmasını engelle */
+}
+
+.seat-selection-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.seats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.seat {
+  width: 45px;
+  height: 50px;
+  background-color: #ddd;
+  border-radius: 15px 15px 0 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.seat.selected {
+  background-color: #ff5722;
+}
+
+.ticket-summary-box h4 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.ticket-summary-box p {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 2px 0;
+}
+
+.ticket-summary-box .summary-prices {
+  margin-top: 15px;
+}
+
+.ticket-summary-box .price-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+#payment-button {
+  margin-top: 15px;
+  width: 100%;
+  background-color: #ff5722;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#payment-button:hover {
+  background-color: #e64a19;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+  align-items: flex-start; /* Önemli: Yükseklik farkında hizalama */
+  gap: 30px; /* Aradaki boşluk */
+  flex-wrap: nowrap; /* Alt satıra inmesini engellemek için */
+}
+
+.payment-form,
+.summary-box {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  flex: 1;
+}
+
+.payment-form {
+  max-width: 60%;
+}
+
+.summary-box {
+  max-width: 35%;
+  align-self: flex-start;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+
+.checkbox-group {
+  margin: 10px 0;
+}
+
+.checkbox-group input {
+  margin-right: 8px;
+}
+
+.btn-pay {
+  width: 100%;
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.btn-pay:hover {
+  background-color: #e64a19;
+}
+
+.ticket-summary-box {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  flex: 0 0 350px; /* Sabit genişlik: 300px */
+  max-width: 400px;
+}
+
+.summary-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.summary-img {
+  width: 100px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.summary-text h4 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.summary-text p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.summary-prices,
+.summary-total {
+  margin: 15px 0;
+}
+
+.price-row,
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.summary-total {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+#payment-button,
+.btn2 {
+  margin-top: 15px;
+  width: 100%;
+  background-color: #ff8c00;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#payment-button:hover {
+  background-color: #e67e00;
+}
+.pre-header {
+  background-color: #f5f5f5;
+  padding: 5px 0; /* Yüksekliği azalt */
+}
+
+.pre-header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.pre-header .text-button a {
+  font-size: 0.85rem; /* Daha küçük font */
+  color: #333;
+  text-decoration: none;
+}
+.qr-modal {
+  display: none; /* Başta gizli */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.qr-modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  width: 300px;
+  position: relative;
+}
+
+.qr-modal-content .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#qrCode canvas {
+  margin: 20px 0;
+}
+.header-area .main-nav .logo {
+  line-height: 80px;
+  color: #656c74;
+  font-size: 28px;
+  font-weight: 700;
+  float: left;
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.header-area .main-nav .logo em {
+  font-style: normal;
+  color: #2a2a2a;
+  font-weight: 900;
+}
+
+.header-area .main-nav .nav {
+  float: right;
+  margin-top: 27px;
+  margin-right: 0px;
+  background-color: transparent;
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  position: relative;
+  z-index: 999;
+}

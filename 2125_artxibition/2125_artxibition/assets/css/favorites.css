@@ -1,0 +1,55 @@
+.fav-item {
+  background: #fafafa;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.fav-item h4 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.fav-item p {
+  font-size: 14px;
+  margin: 3px 0;
+}
+
+.fav-buttons {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+/* Remove Button (KIRMIZI) */
+.fav-buttons .remove-fav-btn {
+  background: #ff4d4d; /* Kırmızı */
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.fav-buttons .remove-fav-btn:hover {
+  background: #cc0000; /* Hover'da koyu kırmızı */
+}
+
+/* Purchase Button (TURUNCU) */
+.fav-buttons .purchase-link {
+  background: #f87e05;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.fav-buttons .purchase-link:hover {
+  background: #ff8c00;
+}

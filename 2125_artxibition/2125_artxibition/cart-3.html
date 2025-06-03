@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="Tooplate" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+      rel="stylesheet"
+    />
+    <title>BEYS - Select Ticket Category</title>
+
+    <!-- CSS Files -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/owl-carousel.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/purchase.css" />
+    <link rel="stylesheet" href="assets/css/tooplate-artxibition.css" />
+  </head>
+
+  <body>
+    <!-- ***** Pre HEader ***** -->
+    <div class="pre-header">
+      <div class="container pre-header-container">
+        <div class="row">
+          <div class="col text-end">
+            <div class="text-button">
+              <a href="javascript:void(0);">
+                Contact Us Now! <i class="fa fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+      <div class="container pre-header-container">
+        <div class="row">
+          <div class="col-12">
+            <nav class="main-nav">
+              <!-- Logo -->
+              <a href="index.html" class="logo">BEYS</a>
+
+              <!-- Menu -->
+              <ul class="nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li>
+                  <a href="login.html" class="custom-login-nav">
+                    <span class="nav-login-text">Login</span>
+                  </a>
+                </li>
+              </ul>
+
+              <a class="menu-trigger">
+                <span>Menu</span>
+              </a>
+              <!-- ***** Menu End ***** -->
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <div class="main-banner">
+      <div class="welcome-text">Event Details</div>
+    </div>
+    <div class="step-indicator">
+      <ul class="steps">
+        <li class="step">Select a Category</li>
+        <li class="step">Choose a Seat</li>
+        <li class="step active">Payment</li>
+      </ul>
+    </div>
+
+    <!-- Main Content Start -->
+    <div class="cart-3-page">
+      <div class="container">
+        <!-- Payment Form (Left Side) -->
+        <div class="payment-form">
+          <h2>Proceed to Payment</h2>
+          <p>
+            Pay securely with your credit card using 3D Secure authentication.
+          </p>
+
+          <form id="payment-form">
+            <div class="form-group">
+              <label>Card Number</label>
+              <input type="text" placeholder="0000 0000 0000 0000" required />
+            </div>
+            <div class="form-group">
+              <label>Cardholder Name</label>
+              <input type="text" placeholder="Name on Card" required />
+            </div>
+            <div class="form-group">
+              <label>Expiration Date</label>
+              <input type="text" placeholder="MM / YY" required />
+            </div>
+            <div class="form-group">
+              <label>Security Code (CVV)</label>
+              <input type="text" placeholder="CVV" required />
+            </div>
+
+            <div class="checkbox-group">
+              <input type="checkbox" required />
+              <label>I have read and agree to the Terms.</label>
+            </div>
+
+            <button type="submit" class="btn-pay">Confirm and Complete</button>
+          </form>
+        </div>
+
+        <!-- Summary Box (Right Side) -->
+        <div class="summary-box">
+          <h2>Total to Pay</h2>
+          <div class="price-row">
+            <span>Order Fee</span>
+            <span>$25</span>
+          </div>
+          <div class="price-row">
+            <span>Ticket (1 item)</span>
+            <span id="ticket-price">$40</span>
+          </div>
+          <div class="total">Total: <span id="total-price">$65.00</span></div>
+
+          <div class="promo">
+            <input type="text" placeholder="Promo Code" />
+            <button>Apply</button>
+          </div>
+        </div>
+      </div>
+      <!-- QR Popup Modal -->
+      <div id="qrModal" class="qr-modal">
+        <div class="qr-modal-content">
+          <span class="close-btn">&times;</span>
+          <h3>Your Ticket QR Code</h3>
+          <div id="qrCode"></div>
+          <button id="downloadTicket">Download Ticket</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content End -->
+
+    <!-- *** Footer *** -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="address">
+              <h4>BEYS Ticketing Office</h4>
+              <span>123 Event Avenue,<br />Istanbul, Türkiye<br />Europe</span>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="links">
+              <h4>Discover More</h4>
+              <ul>
+                <li><a href="#">Events</a></li>
+                <li><a href="#">Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="hours">
+              <h4>Open Hours</h4>
+              <ul>
+                <li>Mon to Fri: 8:00 AM to 6:00 PM</li>
+                <li>Sat - Sun: 11:00 AM to 4:00 PM</li>
+                <li>Holidays: Closed</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-12">
+            <div class="sub-footer">
+              <div class="row">
+                <div class="col-lg-3">
+                  <div class="main-nav">
+                    <a href="index.html" class="logo">BEYS</a>
+                  </div>
+                </div>
+
+                <div class="col-lg-9">
+                  <div class="social-links">
+                    <ul>
+                      <li>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                      </li>
+                      <li>
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                      </li>
+                      <li>
+                        <a href="#"><i class="fa fa-behance"></i></a>
+                      </li>
+                      <li>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery-2.1.0.min.js"></script>
+    <script src="assets/js/popper.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/scrollreveal.min.js"></script>
+    <script src="assets/js/waypoints.min.js"></script>
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="assets/js/imgfix.min.js"></script>
+    <script src="assets/js/mixitup.js"></script>
+    <script src="assets/js/accordions.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/quantity.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/purchase.js"></script>
+    <script>
+      // Total price hesaplama (Cart-2'den alınan fiyat)
+      const selectedSeats = sessionStorage.getItem("selectedSeatsCount") || 1;
+      const seatPrice = 40;
+      const orderFee = 25;
+      const total = selectedSeats * seatPrice + orderFee;
+
+      document.getElementById("ticket-price").textContent =
+        "$" + selectedSeats * seatPrice;
+      document.getElementById("total-price").textContent =
+        "$" + total.toFixed(2);
+    </script>
+    <!-- QRious kütüphanesini ekle (head veya body kapanmadan hemen önce ekleyebilirsin) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const selectedSeats = sessionStorage.getItem("selectedSeatsCount") || 1;
+        const seatPrice = 40;
+        const orderFee = 25;
+        const total = selectedSeats * seatPrice + orderFee;
+
+        document.getElementById("ticket-price").textContent =
+          "$" + selectedSeats * seatPrice;
+        document.getElementById("total-price").textContent =
+          "$" + total.toFixed(2);
+
+        const qrModal = document.getElementById("qrModal");
+        const qrContainer = document.getElementById("qrCode");
+        const downloadButton = document.getElementById("downloadTicket");
+        const closeButton = document.querySelector(".close-btn");
+
+        // Submit form eventi
+        document
+          .getElementById("payment-form")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // QR kodu oluştur
+            const qrData =
+              "Your Ticket for " +
+              (sessionStorage.getItem("selectedEventTitle") || "BEYS Event");
+            const qr = new QRious({
+              value: qrData,
+              size: 200,
+            });
+
+            qrContainer.innerHTML = "";
+            qrContainer.appendChild(qr.canvas);
+
+            // Modalı göster
+            qrModal.style.display = "flex";
+
+            // Download işlemi
+            downloadButton.onclick = () => {
+              const link = document.createElement("a");
+              link.href = qr.toDataURL("image/png");
+              link.download = "ticket-qr.png";
+              link.click();
+            };
+
+            // Yönlendirme: QR modal açıkken hemen yönlenmesin, kullanıcı kapatana kadar beklesin
+            // Yani yönlendirme kodunu kaldır veya istersen gecikme ekle (örneğin 5 saniye sonra):
+            /*
+        setTimeout(() => {
+          window.location.href = "index-after-logged-in.html";
+        }, 5000);
+        */
+          });
+
+        closeButton.addEventListener("click", () => {
+          qrModal.style.display = "none";
+          // Kapatınca yönlendir
+          window.location.href = "index.html";
+        });
+      });
+    </script>
+  </body>
+</html>
