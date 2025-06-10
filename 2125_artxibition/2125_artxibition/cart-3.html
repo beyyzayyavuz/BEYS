@@ -136,7 +136,7 @@
 
           <div class="promo">
             <input type="text" placeholder="Promo Code" />
-            <button>Apply</button>
+            <button class="promo-btn">Apply</button>
           </div>
         </div>
       </div>
@@ -231,47 +231,140 @@
     <script src="assets/js/quantity.js"></script>
     <script src="assets/js/custom.js"></script>
     <script src="assets/js/purchase.js"></script>
-    <script>
-      // Total price hesaplama (Cart-2'den alınan fiyat)
-      const selectedSeats = sessionStorage.getItem("selectedSeatsCount") || 1;
-      const seatPrice = 40;
-      const orderFee = 25;
-      const total = selectedSeats * seatPrice + orderFee;
-
-      document.getElementById("ticket-price").textContent =
-        "$" + selectedSeats * seatPrice;
-      document.getElementById("total-price").textContent =
-        "$" + total.toFixed(2);
-    </script>
-    <!-- QRious kütüphanesini ekle (head veya body kapanmadan hemen önce ekleyebilirsin) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        const selectedSeats = sessionStorage.getItem("selectedSeatsCount") || 1;
-        const seatPrice = 40;
-        const orderFee = 25;
-        const total = selectedSeats * seatPrice + orderFee;
+        // Sabit veri listesi
+        const eventPricing = [
+          {
+            id: "1",
+            title: "Fenerbahçe Beko vs Anadolu Efes",
+            price: 90,
+            orderFee: 25,
+          },
+          {
+            id: "2",
+            title: "Beşiktaş Fibabanka vs Galatasaray NEF",
+            price: 120,
+            orderFee: 25,
+          },
+          {
+            id: "3",
+            title: "Eczacıbaşı Dynavit vs VakıfBank",
+            price: 75,
+            orderFee: 25,
+          },
+          {
+            id: "4",
+            title: "Pınar Karşıyaka vs Darüşşafaka",
+            price: 110,
+            orderFee: 25,
+          },
+          {
+            id: "5",
+            title: "Ankara DSİ vs İstanbul BŞB",
+            price: 130,
+            orderFee: 25,
+          },
+          {
+            id: "6",
+            title: "TED Ankara Kolejliler vs Gaziantep Basketbol",
+            price: 50,
+            orderFee: 25,
+          },
+          {
+            id: "7",
+            title: "Galatasaray A.Ş vs Trabzonspor",
+            price: 40,
+            orderFee: 25,
+          },
+          {
+            id: "8",
+            title: "Fenerbahçe vs Adana Demirspor",
+            price: 85,
+            orderFee: 25,
+          },
+          {
+            id: "9",
+            title: "Ziraat Bankkart vs Halkbank",
+            price: 95,
+            orderFee: 25,
+          },
+          {
+            id: "10",
+            title: "İpek Soylu vs Zeynep Sönmez",
+            price: 95,
+            orderFee: 25,
+          },
+          {
+            id: "11",
+            title: "Türkiye vs İtalya (Kadın Voleybol)",
+            price: 95,
+            orderFee: 25,
+          },
+          {
+            id: "12",
+            title: "Efes Pilsen vs Pınar Karşıyaka",
+            price: 95,
+            orderFee: 25,
+          },
+          {
+            id: "13",
+            title: "Galatasaray vs Fenerbahçe",
+            price: 95,
+            orderFee: 25,
+          },
+          {
+            id: "14",
+            title: "Türkiye vs Sırbistan (Basketbol)",
+            price: 95,
+            orderFee: 25,
+          },
+          {
+            id: "15",
+            title: "Beşiktaş vs Trabzonspor",
+            price: 45,
+            orderFee: 25,
+          },
+        ];
 
-        document.getElementById("ticket-price").textContent =
-          "$" + selectedSeats * seatPrice;
-        document.getElementById("total-price").textContent =
-          "$" + total.toFixed(2);
+        const selectedEventId = sessionStorage.getItem("selectedEventId");
+        const selectedSeats = parseInt(
+          sessionStorage.getItem("selectedSeatsCount") || "1"
+        );
 
+        const selectedEvent = eventPricing.find(
+          (e) => e.id === selectedEventId
+        );
+
+        if (!selectedEvent) {
+          console.error("Etkinlik bilgisi bulunamadı.");
+          return;
+        }
+
+        // Fiyat hesapla ve yaz
+        const totalPrice =
+          selectedSeats * selectedEvent.price + selectedEvent.orderFee;
+        document.getElementById("ticket-price").textContent = `$${
+          selectedSeats * selectedEvent.price
+        }`;
+        document.getElementById(
+          "total-price"
+        ).textContent = `$${totalPrice.toFixed(2)}`;
+
+        // QR modal işlemleri
         const qrModal = document.getElementById("qrModal");
         const qrContainer = document.getElementById("qrCode");
         const downloadButton = document.getElementById("downloadTicket");
         const closeButton = document.querySelector(".close-btn");
 
-        // Submit form eventi
+        // Submit form
         document
           .getElementById("payment-form")
           .addEventListener("submit", function (e) {
             e.preventDefault();
 
-            // QR kodu oluştur
-            const qrData =
-              "Your Ticket for " +
-              (sessionStorage.getItem("selectedEventTitle") || "BEYS Event");
+            const qrData = `Your Ticket for ${selectedEvent.title}`;
             const qr = new QRious({
               value: qrData,
               size: 200,
@@ -279,30 +372,19 @@
 
             qrContainer.innerHTML = "";
             qrContainer.appendChild(qr.canvas);
-
-            // Modalı göster
             qrModal.style.display = "flex";
 
-            // Download işlemi
             downloadButton.onclick = () => {
               const link = document.createElement("a");
               link.href = qr.toDataURL("image/png");
               link.download = "ticket-qr.png";
               link.click();
             };
-
-            // Yönlendirme: QR modal açıkken hemen yönlenmesin, kullanıcı kapatana kadar beklesin
-            // Yani yönlendirme kodunu kaldır veya istersen gecikme ekle (örneğin 5 saniye sonra):
-            /*
-        setTimeout(() => {
-          window.location.href = "index-after-logged-in.html";
-        }, 5000);
-        */
           });
 
+        // Modal kapatma ve yönlendirme
         closeButton.addEventListener("click", () => {
           qrModal.style.display = "none";
-          // Kapatınca yönlendir
           window.location.href = "index.html";
         });
       });

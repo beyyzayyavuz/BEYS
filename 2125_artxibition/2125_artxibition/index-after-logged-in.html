@@ -25,6 +25,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css" />
 
     <link rel="stylesheet" type="text/css" href="assets/css/owl-carousel.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/search.css" />
 
     <link rel="stylesheet" href="assets/css/tooplate-artxibition.css" />
 
@@ -73,6 +74,18 @@ https://www.tooplate.com/view/2125-artxibition
             <nav class="main-nav">
               <!-- Logo -->
               <a href="index-after-logged-in.html" class="logo">BEYS</a>
+              <!-- Search Bar -->
+              <!-- Modern Search Bar -->
+              <form class="modern-search-form" onsubmit="return false;">
+                <div class="search-container">
+                  <i class="fa fa-search search-icon"></i>
+                  <input
+                    type="text"
+                    id="eventSearchInput"
+                    placeholder="Search for matches..."
+                  />
+                </div>
+              </form>
 
               <!-- Menu -->
               <ul class="nav">
@@ -111,6 +124,9 @@ https://www.tooplate.com/view/2125-artxibition
         </div>
         <div class="owl-carousel owl-theme" id="just-for-you-events"></div>
       </div>
+      <button class="fav-btn">
+        <i class="fa fa-heart-o"></i>
+      </button>
     </section>
 
     <!-- Upcoming Events -->
@@ -212,7 +228,8 @@ https://www.tooplate.com/view/2125-artxibition
     <!-- Global Init -->
     <script src="assets/js/custom.js"></script>
     <script src="assets/js/events.js"></script>
-    <script src="assets/js/events.js"></script>
+    <script src="assets/js/search.js"></script>
+
     <script>
       function initSliders() {
         $("#upcoming-events").owlCarousel({
@@ -247,20 +264,26 @@ https://www.tooplate.com/view/2125-artxibition
             1200: { items: 4 },
           },
         });
+
+        $("#just-for-you-events").owlCarousel({
+          items: 3,
+          loop: true, // <<< burada false yap
+          margin: 25,
+          autoplay: true,
+          autoplayTimeout: 4000,
+          autoplayHoverPause: true,
+          nav: true,
+          dots: true,
+          responsive: {
+            0: { items: 1 },
+            600: { items: 2 },
+            900: { items: 3 },
+            1200: { items: 4 },
+          },
+        });
       }
-      $("#just-for-you-events").owlCarousel({
-        items: 3,
-        loop: true,
-        margin: 25,
-        autoplay: true,
-        nav: true,
-        dots: true,
-        responsive: {
-          0: { items: 1 },
-          600: { items: 2 },
-          900: { items: 3 },
-          1200: { items: 4 },
-        },
+      $(document).ready(function () {
+        initSliders();
       });
     </script>
   </body>

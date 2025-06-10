@@ -23,6 +23,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/owl-carousel.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/purchase.css" />
+
     <link rel="stylesheet" href="assets/css/tooplate-artxibition.css" />
   </head>
 
@@ -47,6 +48,7 @@
           <div class="col-12">
             <nav class="main-nav">
               <a href="index.html" class="logo">BEYS</a>
+
               <ul class="nav">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="events.html">Events</a></li>
@@ -97,7 +99,7 @@
                 <span id="event-price">$0</span>
               </div>
               <div class="price-row">
-                <span>Service Fee:</span>
+                <span>Order Fee:</span>
                 <span id="event-fee">$0</span>
               </div>
               <div class="price-row">
@@ -200,30 +202,138 @@
       const events = [
         {
           id: "1",
-          title: "Radio City Musical Hall",
+          title: "Fenerbahçe Beko vs Anadolu Efes",
           date: "Thu 18:00-22:00",
-          location: "NYC",
-          image: "assets/images/venue-01.jpg",
-          price: 50,
-          serviceFee: 15,
+          location: "Ülker Sports Arena, İstanbul",
+          image: "assets/images/match-01.jpg",
+          price: 90,
+          serviceFee: 25,
         },
         {
           id: "2",
-          title: "Madison Square Garden",
-          date: "Fri 20:00-23:00",
+          title: "Beşiktaş Fibabanka vs Galatasaray NEF",
+          date: "Akatlar Spor Kompleksi, İstanbul",
           location: "NYC",
-          image: "assets/images/venue-02.jpg",
-          price: 60,
-          serviceFee: 20,
+          image: "assets/images/match-05.jpg",
+          price: 120,
+          serviceFee: 25,
         },
         {
           id: "3",
-          title: "Sunset Beach Party",
+          title: "Eczacıbaşı Dynavit vs VakıfBank",
           date: "Sat 15:00-19:00",
-          location: "LA",
-          image: "assets/images/venue-05.jpg",
+          location: "Burhan Felek Vestel Voleybol Salonu",
+          image: "assets/images/match-02.jpg",
+          price: 75,
+          serviceFee: 25,
+        },
+        {
+          id: "4",
+          title: "Pınar Karşıyaka vs Darüşşafaka",
+          date: "Sat 15:00-19:00",
+          location: "Karşıyaka Spor Salonu, İzmir",
+          image: "assets/images/match-13.jpg",
+          price: 110,
+          serviceFee: 25,
+        },
+        {
+          id: "5",
+          title: "Ankara DSİ vs İstanbul BŞB",
+          date: "Sat 15:00-19:00",
+          location: "Ankara Spor Kompleksi, Ankara",
+          image: "assets/images/match-14.jpg",
+          price: 130,
+          serviceFee: 25,
+        },
+        {
+          id: "6",
+          title: "TED Ankara Kolejliler vs Gaziantep Basketbol",
+          date: "Sat 15:00-19:00",
+          location: "TED Koleji Spor Salonu, Ankara",
+          image: "assets/images/match-15.jpg",
+          price: 50,
+          serviceFee: 25,
+        },
+        {
+          id: "7",
+          title: "Galatasaray A.Ş vs Trabzonspor",
+          date: "Sat 15:00-19:00",
+          location: "RAMS Park, İstanbul",
+          image: "assets/images/match-04.jpg",
           price: 40,
-          serviceFee: 10,
+          serviceFee: 25,
+        },
+        {
+          id: "8",
+          title: "Fenerbahçe vs Adana Demirspor",
+          date: "Sat 15:00-19:00",
+          location: "Şükrü Saracoğlu Stadyumu, İstanbul",
+          image: "assets/images/match-06.jpg",
+          price: 85,
+          serviceFee: 25,
+        },
+        {
+          id: "9",
+          title: "Ziraat Bankkart vs Halkbank",
+          date: "Sat 15:00-19:00",
+          location: "Başkent Voleybol Salonu, Ankara",
+          image: "assets/images/match-07.jpg",
+          price: 95,
+          serviceFee: 25,
+        },
+        {
+          id: "10",
+          title: "İpek Soylu vs Zeynep Sönmez",
+          date: "Sat 15:00-19:00",
+          location: "TED Spor Kulübü, İstanbul",
+          image: "assets/images/match-03.jpg",
+          price: 95,
+          serviceFee: 25,
+        },
+        {
+          id: "11",
+          title: "Türkiye vs İtalya (Kadın Voleybol)",
+          date: "Sat 15:00-19:00",
+          location: "Ankara Spor Salonu",
+          image: "assets/images/match-08.jpg",
+          price: 95,
+          serviceFee: 25,
+        },
+        {
+          id: "12",
+          title: "Efes Pilsen vs Pınar Karşıyaka",
+          date: "Sat 15:00-19:00",
+          location: "Sinan Erdem Spor Salonu, İstanbul",
+          image: "assets/images/match-09.jpg",
+          price: 95,
+          serviceFee: 25,
+        },
+        {
+          id: "13",
+          title: "Galatasaray vs Fenerbahçe",
+          date: "Sat 15:00-19:00",
+          location: "Ali Sami Yen Spor Kompleksi, İstanbul",
+          image: "assets/images/match-10.jpg",
+          price: 95,
+          serviceFee: 25,
+        },
+        {
+          id: "14",
+          title: "Türkiye vs Sırbistan (Basketbol)",
+          date: "Sat 15:00-19:00",
+          location: "Ülker Spor ve Etkinlik Salonu, İstanbul",
+          image: "assets/images/match-11.jpg",
+          price: 95,
+          serviceFee: 25,
+        },
+        {
+          id: "15",
+          title: "Beşiktaş vs Trabzonspor",
+          date: "Sat 15:00-19:00",
+          location: "Vodafone Park, İstanbul",
+          image: "assets/images/match-12.jpg",
+          price: 45,
+          serviceFee: 25,
         },
       ];
 

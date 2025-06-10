@@ -25,6 +25,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css" />
 
     <link rel="stylesheet" type="text/css" href="assets/css/owl-carousel.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/search.css" />
 
     <link rel="stylesheet" href="assets/css/tooplate-artxibition.css" />
     <!--
@@ -100,31 +101,20 @@ https://www.tooplate.com/view/2125-artxibition
             <div class="right-content">
               <h4 id="event-title"></h4>
               <span id="event-availability"></span>
+              <div class="event-description-section">
+               <p id="event-description" class="event-desc"></p>
+               <hr />
+              </div>
+
+              
               <ul id="event-details-list">
                 <!-- Tarih ve lokasyon burada JS ile eklenecek -->
               </ul>
+               <!-- Fiyatı gösterecek yeni element buraya eklendi -->
+  <div class="price-section">
+    <h5 id="event-price"></h5>
+  </div>
               <div class="quantity-content">
-                <div class="left-content">
-                  <h6>Standard Ticket</h6>
-                  <p id="event-price"></p>
-                </div>
-                <div class="right-content">
-                  <div class="quantity buttons_added">
-                    <input type="button" value="-" class="minus" />
-                    <input
-                      type="number"
-                      step="1"
-                      min="1"
-                      name="quantity"
-                      value="1"
-                      title="Qty"
-                      class="input-text qty text"
-                      size="4"
-                    />
-                    <input type="button" value="+" class="plus" />
-                  </div>
-                </div>
-              </div>
               <div class="total">
                 <h4 id="event-total-price"></h4>
                 <div class="main-dark-button">
@@ -231,152 +221,219 @@ https://www.tooplate.com/view/2125-artxibition
       document.addEventListener("DOMContentLoaded", () => {
         const eventId = sessionStorage.getItem("selectedEventId");
         const events = [
-          {
-            id: "1",
-            title: "Fenerbahçe Beko vs Anadolu Efes",
-            desc: "Ülker Sports Arena, Istanbul",
-            image: "assets/images/match-01.jpg",
-            capacity: 15500,
-            audience: 14800,
-            date: "Thursday 20:00 to 22:30",
-            location: "Istanbul",
-            price: 90,
-          },
-          {
-            id: "2",
-            title: "Beşiktaş vs Galatasaray",
-            desc: "Vodafone Park, Istanbul",
-            image: "assets/images/match-05.jpg",
-            capacity: 42000,
-            audience: 41500,
-            date: "Sunday 19:00 to 21:00",
-            location: "Istanbul",
-            price: 120,
-          },
-          {
-            id: "3",
-            title: "Eczacıbaşı vs VakıfBank",
-            desc: "Burhan Felek Vestel Sports Hall",
-            image: "assets/images/match-02.jpg",
-            capacity: 7000,
-            audience: 6900,
-            date: "Saturday 17:00 to 19:00",
-            location: "Istanbul",
-            price: 75,
-          },
-          {
-            id: "4",
-            title: "Galatasaray A.Ş vs Başakşehir FK",
-            desc: "RAMS Park, Istanbul",
-            image: "assets/images/match-04.jpg",
-            capacity: 52000,
-            audience: 51000,
-            date: "Friday 20:00 to 22:00",
-            location: "Istanbul",
-            price: 110,
-          },
-          {
-            id: "5",
-            title: "Fenerbahçe vs Trabzonspor",
-            desc: "Ülker Stadium, Kadıköy",
-            image: "assets/images/match-06.jpg",
-            capacity: 47000,
-            audience: 46000,
-            date: "Sunday 21:00 to 23:00",
-            location: "Istanbul",
-            price: 130,
-          },
-          {
-            id: "6",
-            title: "Ziraat Bankkart vs Halkbank",
-            desc: "Başkent Volleyball Hall, Ankara",
-            image: "assets/images/match-07.jpg",
-            capacity: 1800,
-            audience: 1750,
-            date: "Wednesday 18:30 to 20:30",
-            location: "Ankara",
-            price: 50,
-          },
-          {
-            id: "7",
-            title: "İpek Soylu vs Zeynep Sönmez",
-            desc: "TED Tennis Club, Istanbul",
-            image: "assets/images/match-03.jpg",
-            capacity: 500,
-            audience: 470,
-            date: "Tuesday 16:00 to 18:00",
-            location: "Istanbul",
-            price: 40,
-          },
-          {
-            id: "8",
-            title: "Türkiye vs İtalya (Women's Volleyball)",
-            desc: "Ankara Sports Hall",
-            image: "assets/images/match-08.jpg",
-            capacity: 10500,
-            audience: 10200,
-            date: "Saturday 18:00 to 20:00",
-            location: "Ankara",
-            price: 85,
-          },
-          {
-            id: "9",
-            title: "Anadolu Efes vs Pınar Karşıyaka",
-            desc: "Sinan Erdem Dome, Istanbul",
-            image: "assets/images/match-09.jpg",
-            capacity: 16000,
-            audience: 15500,
-            date: "Thursday 20:00 to 22:00",
-            location: "Istanbul",
-            price: 95,
-          },
-        ];
+  {
+    id: "1",
+    title: "Fenerbahçe Beko vs Anadolu Efes",
+    desc: "Exciting basketball match between two Turkish basketball giants in the Turkish Basketball Super League.",
+    image: "assets/images/match-01.jpg",
+    capacity: 250,
+    audience: 500,
+    date: "Thursday 20:00 to 22:30",
+    location: "Istanbul",
+    price: 90,
+  },
+  {
+    id: "2",
+    title: "Beşiktaş Fibabanka vs Galatasaray NEF",
+    desc: "Intense basketball rivalry match in the Turkish Basketball Super League at Akatlar Spor Kompleksi.",
+    image: "assets/images/match-05.jpg",
+    capacity: 450,
+    audience: 650,
+    date: "Sunday 19:00 to 21:00",
+    location: "Istanbul",
+    price: 120,
+  },
+  {
+    id: "3",
+    title: "Eczacıbaşı Dynavit vs VakıfBank",
+    desc: "Top-level women's volleyball match between two powerhouse teams in the Turkish Volleyball League.",
+    image: "assets/images/match-02.jpg",
+    capacity: 250,
+    audience: 500,
+    date: "Saturday 17:00 to 19:00",
+    location: "Istanbul",
+    price: 75,
+  },
+  {
+    id: "4",
+    title: "Pınar Karşıyaka vs Darüşşafaka",
+    desc: "Competitive basketball game featuring Pınar Karşıyaka against Darüşşafaka in İzmir.",
+    image: "assets/images/match-13.jpg",
+    capacity: 350,
+    audience: 420,
+    date: "Friday 20:00 to 22:00",
+    location: "Istanbul",
+    price: 110,
+  },
+  {
+    id: "5",
+    title: "Ankara DSİ vs İstanbul BŞB",
+    desc: "Women's basketball match between Ankara DSİ and İstanbul Büyükşehir Belediyesi teams.",
+    image: "assets/images/match-14.jpg",
+    capacity: 280,
+    audience: 320,
+    date: "Sunday 21:00 to 23:00",
+    location: "Istanbul",
+    price: 130,
+  },
+  {
+    id: "6",
+    title: "TED Ankara Kolejliler vs Gaziantep Basketbol",
+    desc: "Basketball match in the Turkish Basketball League at TED Koleji Spor Salonu.",
+    image: "assets/images/match-15.jpg",
+    capacity: 220,
+    audience: 260,
+    date: "Wednesday 18:30 to 20:30",
+    location: "Ankara",
+    price: 50,
+  },
+  {
+    id: "7",
+    title: "Galatasaray A.Ş vs Trabzonspor",
+    desc: "High-profile Süper Lig football match between Galatasaray and Trabzonspor at RAMS Park.",
+    image: "assets/images/match-04.jpg",
+    capacity: 52000,
+    audience: 49000,
+    date: "Tuesday 16:00 to 18:00",
+    location: "Istanbul",
+    price: 40,
+  },
+  {
+    id: "8",
+    title: "Fenerbahçe vs Adana Demirspor",
+    desc: "Süper Lig football clash between Fenerbahçe and Adana Demirspor at Şükrü Saracoğlu Stadium.",
+    image: "assets/images/match-06.jpg",
+    capacity: 47000,
+    audience: 43000,
+    date: "Saturday 18:00 to 20:00",
+    location: "Ankara",
+    price: 85,
+  },
+  {
+    id: "9",
+    title: "Ziraat Bankkart vs Halkbank",
+    desc: "Men's volleyball match between two Ankara-based teams in the Turkish Volleyball League.",
+    image: "assets/images/match-07.jpg",
+    capacity: 1800,
+    audience: 1600,
+    date: "Thursday 20:00 to 22:00",
+    location: "Istanbul",
+    price: 95,
+  },
+  {
+    id: "10",
+    title: "İpek Soylu vs Zeynep Sönmez",
+    desc: "Women's tennis match featuring Turkish tennis stars at TED Spor Kulübü.",
+    image: "assets/images/match-03.jpg",
+    capacity: 500,
+    audience: 450,
+    date: "Thursday 20:00 to 22:00",
+    location: "Istanbul",
+    price: 95,
+  },
+  {
+    id: "11",
+    title: "Türkiye vs İtalya (Kadın Voleybol)",
+    desc: "International women's volleyball friendly match between Turkey and Italy.",
+    image: "assets/images/match-08.jpg",
+    capacity: 10000,
+    audience: 9500,
+    date: "Thursday 20:00 to 22:00",
+    location: "Istanbul",
+    price: 95,
+  },
+  {
+    id: "12",
+    title: "Efes Pilsen vs Pınar Karşıyaka",
+    desc: "Basketball match in the Turkish Basketball Super League at Sinan Erdem Spor Salonu.",
+    image: "assets/images/match-09.jpg",
+    capacity: 16000,
+    audience: 15500,
+    date: "Thursday 20:00 to 22:00",
+    location: "Istanbul",
+    price: 95,
+  },
+  {
+    id: "13",
+    title: "Galatasaray vs Fenerbahçe",
+    desc: "The legendary Intercontinental Derby, one of the biggest football rivalries in the world.",
+    image: "assets/images/match-10.jpg",
+    capacity: 52000,
+    audience: 51500,
+    date: "Thursday 20:00 to 22:00",
+    location: "Istanbul",
+    price: 95,
+  },
+  {
+    id: "14",
+    title: "Türkiye vs Sırbistan (Basketbol)",
+    desc: "International basketball friendly match between Turkey and Serbia national teams.",
+    image: "assets/images/match-11.jpg",
+    capacity: 13000,
+    audience: 12750,
+    date: "Thursday 20:00 to 22:00",
+    location: "Istanbul",
+    price: 95,
+  },
+  {
+    id: "15",
+    title: "Beşiktaş vs Trabzonspor",
+    desc: "Important Süper Lig football match between Beşiktaş and Trabzonspor at Vodafone Park.",
+    image: "assets/images/match-12.jpg",
+    capacity: 42000,
+    audience: 40000,
+    date: "Thursday 20:00 to 22:00",
+    location: "Istanbul",
+    price: 45,
+  },
+];
 
         /*ID BAŞTA INTEGER OLARAK VARDI SONRA BU KISIM İÇİN STRING YAPTIK*/
 
-        const event = events.find((e) => e.id === eventId);
-        if (!event) return;
+         const event = events.find((e) => e.id === eventId);
+    if (!event) {
+      console.warn("Event not found for ID:", eventId);
+      return;
+    }
 
-        // Sayfayı doldur
-        document.getElementById("event-image").src = event.image;
-        document.getElementById("event-title").textContent = event.title;
-        document.getElementById(
-          "event-availability"
-        ).textContent = `${event.capacity} Tickets still available`;
-        document.getElementById("event-details-list").innerHTML = `
-        <li><i class="fa fa-clock-o"></i> ${event.date}</li>
-        <li><i class="fa fa-map-marker"></i> ${event.location}</li>
-      `;
-        document.getElementById(
-          "event-price"
-        ).textContent = `$${event.price} per ticket`;
+    // Görsel ve Başlık
+    document.getElementById("event-image").src = event.image;
+    document.getElementById("event-title").textContent = event.title;
 
-        const qtyInput = document.querySelector(".input-text.qty");
-        const totalPriceEl = document.getElementById("event-total-price");
+    // Açıklama (desc)
+    document.getElementById("event-description").textContent = event.desc;
 
-        function updateTotal() {
-          const qty = parseInt(qtyInput.value) || 1;
-          const total = qty * event.price;
-          totalPriceEl.textContent = `Total: $${total}`;
-        }
+    // Kalan bilet bilgisi
+    const available = event.capacity - event.audience;
+    document.getElementById("event-availability").textContent = `${available} Tickets still available`;
 
-        qtyInput.addEventListener("input", updateTotal);
-        updateTotal();
+    // Detaylı liste (tarih, konum)
+    document.getElementById("event-details-list").innerHTML = `
+      <li><i class="fa fa-clock-o"></i> ${event.date}</li>
+      <li><i class="fa fa-map-marker"></i> ${event.location}</li>
+    `;
+
+    // Fiyat etiketi (tekli bilet)
+ // Fiyat etiketi (tekli bilet)
+const pricePerTicket = `$${event.price}`;
+document.getElementById("event-price").textContent = pricePerTicket;
+    if (document.getElementById("event-price")) {
+      document.getElementById("event-price").textContent = pricePerTicket;
+    }
+
+    
+
+    // Butonlara tıklama ve yönlendirme
+    const continueButtons = document.querySelectorAll(".main-dark-button a");
+    continueButtons.forEach((btn) => {
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        const category = btn.getAttribute("data-category") || "Tribune";
+        sessionStorage.setItem("selectedCategory", category);
+        window.location.href = "cart-1-after-logged-in.html";
       });
-      document.addEventListener("DOMContentLoaded", () => {
-        const continueButtons = document.querySelectorAll(
-          ".main-dark-button a"
-        );
-
-        continueButtons.forEach((btn) => {
-          btn.addEventListener("click", function (e) {
-            e.preventDefault();
-            const category = btn.getAttribute("data-category") || "Tribune";
-            sessionStorage.setItem("selectedCategory", category);
-            window.location.href = "cart-1-after-logged-in.html";
-          });
-        });
-      });
+    });
+  });
     </script>
   </body>
 </html>

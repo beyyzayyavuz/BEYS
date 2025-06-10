@@ -282,7 +282,7 @@ h2 {
 
 .btn-pay {
   width: 100%;
-  background-color: #ff5722;
+  background-color: #f87e05;
   color: white;
   border: none;
   border-radius: 6px;
@@ -451,4 +451,18 @@ h2 {
   transition: all 0.3s ease 0s;
   position: relative;
   z-index: 999;
+}
+.promo-btn {
+  background-color: #f57c00; /* turuncumsu */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 0 10px 10px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.promo-btn:hover {
+  background-color: #ef6c00; /* daha koyu turuncu */
 }

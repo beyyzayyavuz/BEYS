@@ -26,6 +26,7 @@
 
     <link rel="stylesheet" type="text/css" href="assets/css/owl-carousel.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/profile.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/search.css" />
     <link rel="stylesheet" href="assets/css/tooplate-artxibition.css" />
 
     <!--
@@ -73,17 +74,28 @@ https://www.tooplate.com/view/2125-artxibition
             <nav class="main-nav">
               <!-- Logo -->
               <a href="index-after-logged-in.html" class="logo">BEYS</a>
+              <!-- Search Bar -->
+              <!-- Modern Search Bar -->
+              <form class="modern-search-form" onsubmit="return false;">
+                <div class="search-container">
+                  <i class="fa fa-search search-icon"></i>
+                  <input
+                    type="text"
+                    id="eventSearchInput"
+                    placeholder="Search for matches..."
+                  />
+                </div>
+              </form>
 
               <!-- Menu -->
+              <!-- Menu -->
               <ul class="nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html" class="active">Events</a></li>
                 <li>
-                  <a href="index-after-logged-in.html">Home</a>
-                </li>
-                <li><a href="events-after-logged-in.html">Events</a></li>
-                <li><a href="favorites.html">My Favorites</a></li>
-                <li><a href="cart.html">My Cart</a></li>
-                <li>
-                  <a href="profile.html">My Profile</a>
+                  <a href="login.html" class="custom-login-nav">
+                    <span class="nav-login-text">Login</span>
+                  </a>
                 </li>
               </ul>
 

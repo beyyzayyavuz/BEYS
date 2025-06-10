@@ -25,6 +25,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css" />
 
     <link rel="stylesheet" type="text/css" href="assets/css/owl-carousel.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/search.css" />
 
     <link rel="stylesheet" href="assets/css/tooplate-artxibition.css" />
     <!--
@@ -73,6 +74,18 @@ https://www.tooplate.com/view/2125-artxibition
             <nav class="main-nav">
               <!-- Logo -->
               <a href="index.html" class="logo">BEYS</a>
+              <!-- Search Bar -->
+              <!-- Modern Search Bar -->
+              <form class="modern-search-form" onsubmit="return false;">
+                <div class="search-container">
+                  <i class="fa fa-search search-icon"></i>
+                  <input
+                    type="text"
+                    id="eventSearchInput"
+                    placeholder="Search for matches..."
+                  />
+                </div>
+              </form>
 
               <!-- Menu -->
               <ul class="nav">
@@ -136,16 +149,16 @@ https://www.tooplate.com/view/2125-artxibition
                           <option name="Asia" id="Asia">Asia</option>
                         </select>
                       </div>
+                    
                       <div class="col-lg-3">
-                        <select value="month">
-                          <option value="month">Price</option>
-                          <option name="min" id="min">$0 - $50</option>
-                          <option name="standard" id="standard">
-                            $50 - $100
-                          </option>
-                          <option name="hight" id="hight">$100 - $200</option>
-                        </select>
-                      </div>
+                       <select id="category-filter">
+              <option value="">Category</option>
+              <option value="football">Football</option>
+              <option value="basketball">Basketball</option>
+              <option value="volleyball">Volleyball</option>
+              <option value="tennis">Tennis</option>
+            </select>
+          </div>
                       <div class="col-lg-3">
                         <fieldset>
                           <button

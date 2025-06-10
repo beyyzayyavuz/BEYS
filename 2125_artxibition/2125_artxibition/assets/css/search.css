@@ -1,0 +1,30 @@
+.modern-search-form {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 150px; /* Logo ile arası için ayarla */
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: #f2f2f2;
+  border-radius: 25px;
+  padding: 5px 15px;
+  width: 450px;
+  height: 36px;
+}
+
+.search-container .search-icon {
+  color: #888;
+  margin-right: 5px;
+}
+
+.search-container input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  width: 100%;
+  color: #333;
+}

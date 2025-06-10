@@ -36,6 +36,33 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       id: "4",
+      title: "Pınar Karşıyaka vs Darüşşafaka",
+      desc: "Karşıyaka Spor Salonu, İzmir",
+      image: "assets/images/match-13.jpg",
+      capacity: 350,
+      audience: 420,
+      category: "upcoming",
+    },
+    {
+      id: "5",
+      title: "Ankara DSİ vs İstanbul BŞB",
+      desc: "Ankara Spor Kompleksi, Ankara",
+      image: "assets/images/match-14.jpg",
+      capacity: 280,
+      audience: 320,
+      category: "upcoming",
+    },
+    {
+      id: "6",
+      title: "TED Ankara Kolejliler vs Gaziantep Basketbol",
+      desc: "TED Koleji Spor Salonu, Ankara",
+      image: "assets/images/match-15.jpg",
+      capacity: 220,
+      audience: 260,
+      category: "upcoming",
+    },
+    {
+      id: "7",
       title: "Galatasaray A.Ş vs Trabzonspor",
       desc: "RAMS Park, İstanbul",
       image: "assets/images/match-04.jpg",
@@ -44,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
       category: "last",
     },
     {
-      id: "5",
+      id: "8",
       title: "Fenerbahçe vs Adana Demirspor",
       desc: "Şükrü Saracoğlu Stadyumu, İstanbul",
       image: "assets/images/match-06.jpg",
@@ -53,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
       category: "last",
     },
     {
-      id: "6",
+      id: "9",
       title: "Ziraat Bankkart vs Halkbank",
       desc: "Başkent Voleybol Salonu, Ankara",
       image: "assets/images/match-07.jpg",
@@ -62,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
       category: "last",
     },
     {
-      id: "7",
+      id: "10",
       title: "İpek Soylu vs Zeynep Sönmez",
       desc: "TED Spor Kulübü, İstanbul",
       image: "assets/images/match-03.jpg",
@@ -71,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
       category: "just-for-you",
     },
     {
-      id: "8",
+      id: "11",
       title: "Türkiye vs İtalya (Kadın Voleybol)",
       desc: "Ankara Spor Salonu",
       image: "assets/images/match-08.jpg",
@@ -80,12 +107,39 @@ document.addEventListener("DOMContentLoaded", () => {
       category: "just-for-you",
     },
     {
-      id: "9",
+      id: "12",
       title: "Efes Pilsen vs Pınar Karşıyaka",
       desc: "Sinan Erdem Spor Salonu, İstanbul",
       image: "assets/images/match-09.jpg",
       capacity: 16000,
       audience: 15500,
+      category: "just-for-you",
+    },
+    {
+      id: "13",
+      title: "Galatasaray vs Fenerbahçe",
+      desc: "Ali Sami Yen Spor Kompleksi, İstanbul",
+      image: "assets/images/match-10.jpg",
+      capacity: 52000,
+      audience: 51500,
+      category: "just-for-you",
+    },
+    {
+      id: "14",
+      title: "Türkiye vs Sırbistan (Basketbol)",
+      desc: "Ülker Spor ve Etkinlik Salonu, İstanbul",
+      image: "assets/images/match-11.jpg",
+      capacity: 13000,
+      audience: 12750,
+      category: "just-for-you",
+    },
+    {
+      id: "15",
+      title: "Beşiktaş vs Trabzonspor",
+      desc: "Vodafone Park, İstanbul",
+      image: "assets/images/match-12.jpg",
+      capacity: 42000,
+      audience: 40000,
       category: "just-for-you",
     },
   ];
@@ -184,3 +238,45 @@ document.body.addEventListener("click", function (e) {
       : "event-details.html";
   }
 });
+function attachSearchFilter() {
+  const searchInput = document.getElementById("eventSearchInput");
+  if (!searchInput) return;
+
+  searchInput.addEventListener("input", function () {
+    const searchTerm = searchInput.value.toLowerCase();
+
+    const allOwlItems = document.querySelectorAll(
+      "#just-for-you-events .owl-item"
+    );
+
+    allOwlItems.forEach((item) => {
+      const titleElement = item.querySelector(".venue-item h4");
+      if (!titleElement) return;
+
+      const title = titleElement.textContent.toLowerCase();
+      item.style.display = title.includes(searchTerm) ? "block" : "none";
+    });
+  });
+}
+// Owl Carousel tamamlandığında filtre başlatmak için gözlemci kur
+function waitForOwlItemsAndAttachFilter() {
+  const container = document.querySelector("#just-for-you-events .owl-stage");
+
+  if (!container) {
+    console.warn("Owl stage not found");
+    return;
+  }
+
+  const observer = new MutationObserver((mutations, obs) => {
+    const owlItems = container.querySelectorAll(".owl-item");
+    if (owlItems.length > 0) {
+      attachSearchFilter(); // artık kartlar DOM'da
+      obs.disconnect(); // gözlemlemeye gerek kalmadı
+    }
+  });
+
+  observer.observe(container, { childList: true, subtree: true });
+}
+
+initSliders(); // slider'ı başlat
+waitForOwlItemsAndAttachFilter(); // DOM’a geldiklerinde filtreyi bağla
