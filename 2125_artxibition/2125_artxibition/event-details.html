@@ -2,43 +2,35 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta name="description" content="" />
-    <meta name="author" content="Tooplate" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BEYS Event Details Page</title>
+
     <link
       href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
       rel="stylesheet"
     />
-
-    <title>ArtXibition Ticket Detail Page</title>
-
-    <!-- Additional CSS Files -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="assets/css/bootstrap.min.css"
-    />
-
-    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css" />
-
-    <link rel="stylesheet" type="text/css" href="assets/css/owl-carousel.css" />
+    <link rel="stylesheet" href="assets/css/owl-carousel.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/purchase.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/search.css" />
     <link rel="stylesheet" href="assets/css/tooplate-artxibition.css" />
-
-    <!--
-
-Tooplate 2125 ArtXibition
-
-https://www.tooplate.com/view/2125-artxibition
-
--->
+    <link rel="stylesheet" type="text/css" href="assets/css/search.css" />
   </head>
-
   <body>
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+      <div class="preloader-inner">
+        <span class="dot"></span>
+        <div class="dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
+    <!-- ***** Pre HEader ***** -->
     <div class="pre-header">
       <div class="container">
         <div class="row">
@@ -52,7 +44,6 @@ https://www.tooplate.com/view/2125-artxibition
         </div>
       </div>
     </div>
-
     <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky">
       <div class="container">
@@ -112,39 +103,27 @@ https://www.tooplate.com/view/2125-artxibition
             <div class="right-content">
               <h4 id="event-title"></h4>
               <span id="event-availability"></span>
+              <div class="event-description-section">
+                <p id="event-description" class="event-desc"></p>
+                <hr />
+              </div>
               <ul id="event-details-list">
                 <!-- Tarih ve lokasyon burada JS ile eklenecek -->
               </ul>
+              <!-- Fiyatı gösterecek yeni element buraya eklendi -->
+              <div class="price-section">
+                <h5 id="event-price"></h5>
+              </div>
               <div class="quantity-content">
-                <div class="left-content">
-                  <h6>Standard Ticket</h6>
-                  <p id="event-price"></p>
-                </div>
-                <div class="right-content">
-                  <div class="quantity buttons_added">
-                    <input type="button" value="-" class="minus" />
-                    <input
-                      type="number"
-                      step="1"
-                      min="1"
-                      name="quantity"
-                      value="1"
-                      title="Qty"
-                      class="input-text qty text"
-                      size="4"
-                    />
-                    <input type="button" value="+" class="plus" />
+                <div class="total">
+                  <h4 id="event-total-price"></h4>
+                  <div class="main-dark-button">
+                    <a href="#">Purchase Tickets</a>
                   </div>
                 </div>
-              </div>
-              <div class="total">
-                <h4 id="event-total-price"></h4>
-                <div class="main-dark-button">
-                  <a href="#" id="purchase-button">Purchase Tickets</a>
+                <div class="warn">
+                  <p>*You Can Only Buy 10 Tickets For This Show</p>
                 </div>
-              </div>
-              <div class="warn">
-                <p>*You Can Only Buy 10 Tickets For This Show</p>
               </div>
             </div>
           </div>
@@ -410,38 +389,53 @@ https://www.tooplate.com/view/2125-artxibition
           },
         ];
 
-        const event = events.find((e) => e.id === eventId);
+        /*ID BAŞTA INTEGER OLARAK VARDI SONRA BU KISIM İÇİN STRING YAPTIK*/
 
+        const event = events.find((e) => e.id === eventId);
         if (!event) {
-          console.error("Event not found!");
+          console.warn("Event not found for ID:", eventId);
           return;
         }
 
-        // Sayfayı doldur
+        // Görsel ve Başlık
         document.getElementById("event-image").src = event.image;
         document.getElementById("event-title").textContent = event.title;
+
+        // Açıklama (desc)
+        document.getElementById("event-description").textContent = event.desc;
+
+        // Kalan bilet bilgisi
+        const available = event.capacity - event.audience;
         document.getElementById(
           "event-availability"
-        ).textContent = `${event.capacity} Tickets still available`;
+        ).textContent = `${available} Tickets still available`;
+
+        // Detaylı liste (tarih, konum)
         document.getElementById("event-details-list").innerHTML = `
-                <li><i class="fa fa-clock-o"></i> ${event.date}</li>
-                <li><i class="fa fa-map-marker"></i> ${event.location}</li>
-              `;
-        document.getElementById(
-          "event-price"
-        ).textContent = `$${event.price} per ticket`;
+      <li><i class="fa fa-clock-o"></i> ${event.date}</li>
+      <li><i class="fa fa-map-marker"></i> ${event.location}</li>
+    `;
 
-        const qtyInput = document.querySelector(".input-text.qty");
-        const totalPriceEl = document.getElementById("event-total-price");
-
-        function updateTotal() {
-          const qty = parseInt(qtyInput.value) || 1;
-          const total = qty * event.price;
-          totalPriceEl.textContent = `Total: $${total}`;
+        // Fiyat etiketi (tekli bilet)
+        // Fiyat etiketi (tekli bilet)
+        const pricePerTicket = `$${event.price}`;
+        document.getElementById("event-price").textContent = pricePerTicket;
+        if (document.getElementById("event-price")) {
+          document.getElementById("event-price").textContent = pricePerTicket;
         }
 
-        qtyInput.addEventListener("input", updateTotal);
-        updateTotal();
+        // Butonlara tıklama ve yönlendirme
+        const continueButtons = document.querySelectorAll(
+          ".main-dark-button a"
+        );
+        continueButtons.forEach((btn) => {
+          btn.addEventListener("click", function (e) {
+            e.preventDefault();
+            const category = btn.getAttribute("data-category") || "Tribune";
+            sessionStorage.setItem("selectedCategory", category);
+            window.location.href = "cart-1.html";
+          });
+        });
       });
 
       /*ID BAŞTA INTEGER OLARAK VARDI SONRA BU KISIM İÇİN STRING YAPTIK*/

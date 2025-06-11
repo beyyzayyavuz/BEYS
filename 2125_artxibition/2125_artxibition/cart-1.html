@@ -25,8 +25,8 @@
     <link rel="stylesheet" type="text/css" href="assets/css/purchase.css" />
     <link rel="stylesheet" href="assets/css/tooplate-artxibition.css" />
   </head>
-
- <!-- ***** Preloader Start ***** -->
+  <body>
+    <!-- ***** Preloader Start ***** -->
     <div id="js-preloader" class="js-preloader">
       <div class="preloader-inner">
         <span class="dot"></span>
@@ -108,7 +108,7 @@
             <div class="category-box">
               <div class="category-info">
                 <h5>Category 2</h5>
-                <p>₺250.00</p>
+                <p class="category-subtitle">₺0.00</p>
               </div>
               <button class="btn continue-btn" data-category="Category 2">
                 Continue
@@ -118,7 +118,7 @@
             <div class="category-box">
               <div class="category-info">
                 <h5>Category 1</h5>
-                <p>₺450.00</p>
+                <p class="category-subtitle">₺0.00</p>
               </div>
               <button class="btn continue-btn" data-category="Category 1">
                 Continue
@@ -128,7 +128,7 @@
             <div class="category-box">
               <div class="category-info">
                 <h5>VIP</h5>
-                <p>₺750.00</p>
+                <p class="category-subtitle">₺0.00</p>
               </div>
               <button class="btn continue-btn" data-category="VIP">
                 Continue
@@ -152,7 +152,7 @@
     </div>
     <!-- Main Content End -->
 
-      <!-- *** Footer *** -->
+    <!-- *** Footer *** -->
     <footer>
       <div class="container">
         <div class="row">
@@ -216,7 +216,6 @@
       </div>
     </footer>
 
-
     <!-- Scripts -->
     <script src="assets/js/jquery-2.1.0.min.js"></script>
     <script src="assets/js/popper.js"></script>
@@ -230,16 +229,158 @@
     <script src="assets/js/owl-carousel.js"></script>
     <script src="assets/js/quantity.js"></script>
     <script src="assets/js/custom.js"></script>
+    >
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        const continueButtons = document.querySelectorAll(".continue-btn");
+        const events = [
+          {
+            id: "1",
+            title: "Fenerbahçe Beko vs Anadolu Efes",
+            date: "Thursday 20:00 to 22:30",
+            location: "Istanbul",
+            image: "assets/images/match-01.jpg",
+            price: 90,
+          },
+          {
+            id: "2",
+            title: "Beşiktaş Fibabanka vs Galatasaray NEF",
+            image: "assets/images/match-05.jpg",
+            date: "Sunday 19:00 to 21:00",
+            location: "Istanbul",
+            price: 120,
+          },
+          {
+            id: "3",
+            title: "Eczacıbaşı Dynavit vs VakıfBank",
+            image: "assets/images/match-02.jpg",
+            date: "Saturday 17:00 to 19:00",
+            location: "Istanbul",
+            price: 75,
+          },
+          {
+            id: "4",
+            title: "Pınar Karşıyaka vs Darüşşafaka",
+            image: "assets/images/match-13.jpg",
+            date: "Friday 20:00 to 22:00",
+            location: "Istanbul",
+            price: 110,
+          },
+          {
+            id: "5",
+            title: "Ankara DSİ vs İstanbul BŞB",
+            image: "assets/images/match-14.jpg",
+            date: "Sunday 21:00 to 23:00",
+            location: "Istanbul",
+            price: 130,
+          },
+          {
+            id: "6",
+            title: "TED Ankara Kolejliler vs Gaziantep Basketbol",
+            image: "assets/images/match-15.jpg",
+            date: "Wednesday 18:30 to 20:30",
+            location: "Ankara",
+            price: 50,
+          },
+          {
+            id: "7",
+            title: "Galatasaray A.Ş vs Trabzonspor",
+            image: "assets/images/match-04.jpg",
+            date: "Tuesday 16:00 to 18:00",
+            location: "Istanbul",
+            price: 40,
+          },
+          {
+            id: "8",
+            title: "Fenerbahçe vs Adana Demirspor",
+            image: "assets/images/match-06.jpg",
+            date: "Saturday 18:00 to 20:00",
+            location: "Ankara",
+            price: 85,
+          },
+          {
+            id: "9",
+            title: "Ziraat Bankkart vs Halkbank",
+            image: "assets/images/match-07.jpg",
+            date: "Thursday 20:00 to 22:00",
+            location: "Istanbul",
+            price: 95,
+          },
+          {
+            id: "10",
+            title: "İpek Soylu vs Zeynep Sönmez",
+            image: "assets/images/match-03.jpg",
+            date: "Thursday 20:00 to 22:00",
+            location: "Istanbul",
+            price: 95,
+          },
+          {
+            id: "11",
+            title: "Türkiye vs İtalya (Kadın Voleybol)",
+            image: "assets/images/match-08.jpg",
+            date: "Thursday 20:00 to 22:00",
+            location: "Istanbul",
+            price: 95,
+          },
+          {
+            id: "12",
+            title: "Efes Pilsen vs Pınar Karşıyaka",
+            image: "assets/images/match-09.jpg",
+            date: "Thursday 20:00 to 22:00",
+            location: "Istanbul",
+            price: 95,
+          },
+          {
+            id: "13",
+            title: "Galatasaray vs Fenerbahçe",
+            image: "assets/images/match-10.jpg",
+            date: "Thursday 20:00 to 22:00",
+            location: "Istanbul",
+            price: 95,
+          },
+          {
+            id: "14",
+            title: "Türkiye vs Sırbistan (Basketbol)",
+            image: "assets/images/match-11.jpg",
+            date: "Thursday 20:00 to 22:00",
+            location: "Istanbul",
+            price: 95,
+          },
+          {
+            id: "15",
+            title: "Beşiktaş vs Trabzonspor",
+            image: "assets/images/match-12.jpg",
+            date: "Thursday 20:00 to 22:00",
+            location: "Istanbul",
+            price: 45,
+          },
+        ];
+        const eventData = JSON.parse(sessionStorage.getItem("selectedEvent"));
+        const basePrice = eventData?.price || 100;
 
-        continueButtons.forEach((btn) => {
-          btn.addEventListener("click", function (e) {
+        const categoryMultipliers = {
+          "Category 2": 1.0,
+          "Category 1": 1.5,
+          VIP: 2.5,
+        };
+
+        const categoryBoxes = document.querySelectorAll(".category-box");
+
+        categoryBoxes.forEach((box) => {
+          const category = box.querySelector("h5").textContent.trim();
+          const multiplier = categoryMultipliers[category] || 1.0;
+          const finalPrice = (basePrice * multiplier).toFixed(2);
+
+          const priceEl = box.querySelector(".category-subtitle");
+          if (priceEl) {
+            priceEl.textContent = `₺${finalPrice}`;
+          }
+
+          const continueBtn = box.querySelector(".continue-btn");
+          continueBtn.addEventListener("click", function (e) {
             e.preventDefault();
-            const category = btn.getAttribute("data-category");
             sessionStorage.setItem("selectedCategory", category);
+            sessionStorage.setItem("selectedCategoryPrice", finalPrice);
             window.location.href = "cart-2.html";
           });
         });

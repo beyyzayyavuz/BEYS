@@ -1,0 +1,42 @@
+.ticket-container {
+  max-width: 600px;
+  margin: auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.ticket-details {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.ticket-details p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+#qrCode {
+  margin: 20px auto;
+}
+
+.btn-download {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #ff8c00;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-download:hover {
+  background-color: #e67e00;
+}

@@ -395,7 +395,7 @@ header
 
 .header-area .main-nav .nav li:hover a,
 .header-area .main-nav .nav li a.active {
-  color: #656c74 !important;
+  color: #2c3b57da !important;
   opacity: 1;
 }
 
@@ -2689,7 +2689,7 @@ responsive
   font-weight: 550;
 }
 .custom-login-nav {
-  background-color: #f97316;
+  background-color: #f87e05;
   color: white !important;
   padding: 10px 20px;
   border-radius: 8px;

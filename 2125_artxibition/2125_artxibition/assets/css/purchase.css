@@ -28,7 +28,7 @@
   right: 0;
   width: 120px; /* Sabit genişlik */
   height: 40px; /* Sabit yükseklik */
-  background-color: #ff5622cb;
+  background-color: #f87e05;
   border: none;
   border-radius: 8px 0 8px 0; /* Sadece sağ alt köşede radius */
   color: #fff;
@@ -172,7 +172,7 @@
 }
 
 .seat {
-  width: 45px;
+  width: 40px;
   height: 50px;
   background-color: #ddd;
   border-radius: 15px 15px 0 0;
@@ -221,15 +221,15 @@
 #payment-button:hover {
   background-color: #e64a19;
 }
-.container {
+.payment-container {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
   gap: 30px;
   justify-content: space-between;
-  align-items: flex-start; /* Önemli: Yükseklik farkında hizalama */
-  gap: 30px; /* Aradaki boşluk */
-  flex-wrap: nowrap; /* Alt satıra inmesini engellemek için */
+  align-items: flex-start;
+  gap: 30px;
+  flex-wrap: nowrap;
 }
 
 .payment-form,
@@ -369,9 +369,9 @@ h2 {
 #payment-button:hover {
   background-color: #e67e00;
 }
-.pre-header {
+/*.pre-header {
   background-color: #f5f5f5;
-  padding: 5px 0; /* Yüksekliği azalt */
+  padding: 5px 0; 
 }
 
 .pre-header-container {
@@ -384,10 +384,10 @@ h2 {
 }
 
 .pre-header .text-button a {
-  font-size: 0.85rem; /* Daha küçük font */
+  font-size: 0.85rem; 
   color: #333;
   text-decoration: none;
-}
+}*/
 .qr-modal {
   display: none; /* Başta gizli */
   position: fixed;
@@ -422,7 +422,7 @@ h2 {
 #qrCode canvas {
   margin: 20px 0;
 }
-.header-area .main-nav .logo {
+/*.header-area .main-nav .logo {
   line-height: 80px;
   color: #656c74;
   font-size: 28px;
@@ -451,7 +451,7 @@ h2 {
   transition: all 0.3s ease 0s;
   position: relative;
   z-index: 999;
-}
+}*/
 .promo-btn {
   background-color: #f57c00; /* turuncumsu */
   color: white;
@@ -465,4 +465,70 @@ h2 {
 
 .promo-btn:hover {
   background-color: #ef6c00; /* daha koyu turuncu */
+}
+.qr-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-modal-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 600px; /* Daha büyük popup */
+  max-width: 90%;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.qr-modal-content h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.qr-modal-content canvas {
+  margin: 20px 0;
+}
+
+#qrInfo {
+  font-size: 16px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+#qrInfo p {
+  margin: 6px 0;
+  line-height: 1.5;
+}
+
+#downloadTicket {
+  background-color: #f97316;
+  color: white;
+  padding: 12px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#downloadTicket:hover {
+  background-color: #ea580c;
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
 }

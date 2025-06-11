@@ -11,30 +11,123 @@ document.addEventListener("DOMContentLoaded", () => {
       const events = [
         {
           id: "1",
-          title: "Radio City Musical Hall",
-          date: "Thu 18:00-22:00",
-          location: "NYC",
-          image: "assets/images/venue-01.jpg",
-          price: 50,
-          serviceFee: 15,
+          title: "Fenerbahçe Beko vs Anadolu Efes",
+          date: "Thursday 20:00 to 22:30",
+          location: "Istanbul",
+          image: "assets/images/match-01.jpg",
+          price: 90,
         },
         {
           id: "2",
-          title: "Madison Square Garden",
-          date: "Fri 20:00-23:00",
-          location: "NYC",
-          image: "assets/images/venue-02.jpg",
-          price: 60,
-          serviceFee: 20,
+          title: "Beşiktaş Fibabanka vs Galatasaray NEF",
+          image: "assets/images/match-05.jpg",
+          date: "Sunday 19:00 to 21:00",
+          location: "Istanbul",
+          price: 120,
         },
         {
           id: "3",
-          title: "Sunset Beach Party",
-          date: "Sat 15:00-19:00",
-          location: "LA",
-          image: "assets/images/venue-05.jpg",
+          title: "Eczacıbaşı Dynavit vs VakıfBank",
+          image: "assets/images/match-02.jpg",
+          date: "Saturday 17:00 to 19:00",
+          location: "Istanbul",
+          price: 75,
+        },
+        {
+          id: "4",
+          title: "Pınar Karşıyaka vs Darüşşafaka",
+          image: "assets/images/match-13.jpg",
+          date: "Friday 20:00 to 22:00",
+          location: "Istanbul",
+          price: 110,
+        },
+        {
+          id: "5",
+          title: "Ankara DSİ vs İstanbul BŞB",
+          image: "assets/images/match-14.jpg",
+          date: "Sunday 21:00 to 23:00",
+          location: "Istanbul",
+          price: 130,
+        },
+        {
+          id: "6",
+          title: "TED Ankara Kolejliler vs Gaziantep Basketbol",
+          image: "assets/images/match-15.jpg",
+          date: "Wednesday 18:30 to 20:30",
+          location: "Ankara",
+          price: 50,
+        },
+        {
+          id: "7",
+          title: "Galatasaray A.Ş vs Trabzonspor",
+          image: "assets/images/match-04.jpg",
+          date: "Tuesday 16:00 to 18:00",
+          location: "Istanbul",
           price: 40,
-          serviceFee: 10,
+        },
+        {
+          id: "8",
+          title: "Fenerbahçe vs Adana Demirspor",
+          image: "assets/images/match-06.jpg",
+          date: "Saturday 18:00 to 20:00",
+          location: "Ankara",
+          price: 85,
+        },
+        {
+          id: "9",
+          title: "Ziraat Bankkart vs Halkbank",
+          image: "assets/images/match-07.jpg",
+          date: "Thursday 20:00 to 22:00",
+          location: "Istanbul",
+          price: 95,
+        },
+        {
+          id: "10",
+          title: "İpek Soylu vs Zeynep Sönmez",
+          image: "assets/images/match-03.jpg",
+          date: "Thursday 20:00 to 22:00",
+          location: "Istanbul",
+          price: 95,
+        },
+        {
+          id: "11",
+          title: "Türkiye vs İtalya (Kadın Voleybol)",
+          image: "assets/images/match-08.jpg",
+          date: "Thursday 20:00 to 22:00",
+          location: "Istanbul",
+          price: 95,
+        },
+        {
+          id: "12",
+          title: "Efes Pilsen vs Pınar Karşıyaka",
+          image: "assets/images/match-09.jpg",
+          date: "Thursday 20:00 to 22:00",
+          location: "Istanbul",
+          price: 95,
+        },
+        {
+          id: "13",
+          title: "Galatasaray vs Fenerbahçe",
+          image: "assets/images/match-10.jpg",
+          date: "Thursday 20:00 to 22:00",
+          location: "Istanbul",
+          price: 95,
+        },
+        {
+          id: "14",
+          title: "Türkiye vs Sırbistan (Basketbol)",
+          image: "assets/images/match-11.jpg",
+          date: "Thursday 20:00 to 22:00",
+          location: "Istanbul",
+          price: 95,
+        },
+        {
+          id: "15",
+          title: "Beşiktaş vs Trabzonspor",
+          image: "assets/images/match-12.jpg",
+          date: "Thursday 20:00 to 22:00",
+          location: "Istanbul",
+          price: 45,
         },
       ];
 
@@ -71,7 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 3️⃣ Cart-1: Kategori Seçimi
+  /* 3️⃣ Cart-1: Kategori Seçimi
   const categoryBoxes = document.querySelectorAll(".category-box");
   if (categoryBoxes.length) {
     categoryBoxes.forEach((box) => {
@@ -79,6 +172,32 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
         const category = box.querySelector("h5").textContent.trim();
         sessionStorage.setItem("selectedCategory", category);
+        window.location.href = "cart-2.html";
+      });
+    });
+  }*/
+  // 3️⃣ Cart-1: Kategori Seçimi
+  const categoryBoxes = document.querySelectorAll(".category-box");
+  if (categoryBoxes.length) {
+    const eventData = JSON.parse(sessionStorage.getItem("selectedEvent"));
+    const basePrice = eventData?.price || 100;
+
+    categoryBoxes.forEach((box) => {
+      const category = box.querySelector("h5").textContent.trim();
+      const multiplier = categoryMultipliers[category] || 1.0;
+      const finalPrice = (basePrice * multiplier).toFixed(2);
+
+      // Sayfada göster (₺ simgesi ile)
+      const priceEl = box.querySelector(".category-subtitle");
+      if (priceEl) {
+        priceEl.textContent = `₺${finalPrice}`;
+      }
+
+      // Butona tıklanınca seçimi kaydet
+      box.querySelector("button").addEventListener("click", (e) => {
+        e.preventDefault();
+        sessionStorage.setItem("selectedCategory", category);
+        sessionStorage.setItem("selectedCategoryPrice", finalPrice);
         window.location.href = "cart-2.html";
       });
     });
@@ -193,34 +312,61 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       sessionStorage.setItem("isLoggedIn", "true");
 
-      const redirect =
-        sessionStorage.getItem("redirectAfterLogin") ||
-        "index-after-logged-in.html";
+      let redirect = sessionStorage.getItem("redirectAfterLogin");
+      if (!redirect || redirect === "index.html") {
+        redirect = "index-after-logged-in.html";
+      }
       sessionStorage.removeItem("redirectAfterLogin");
       window.location.href = redirect;
     });
   }
 
-  // 8️⃣ Guest Devam Et
+  //guest işlemlerii
+
   const guestBtn = document.getElementById("continue-as-guest");
+
   if (guestBtn) {
     guestBtn.addEventListener("click", (e) => {
       e.preventDefault();
+
       sessionStorage.setItem("isLoggedIn", "guest");
 
-      // Eğer redirect değeri cart-3-after-logged-in.html ise, guest için bunu cart-3.html yap
-      let redirect =
-        sessionStorage.getItem("redirectAfterLogin") || "index.html";
-      if (redirect === "cart-3-after-logged-in.html") {
-        redirect = "cart-3.html";
+      // cart3-after için gelindiyse düzelt
+      let redirect = sessionStorage.getItem("redirectAfterLogin");
+
+      if (
+        !redirect || // hiç tanımlanmamışsa
+        redirect === "index.html" ||
+        redirect.includes("index-after-logged-in.html")
+      ) {
+        redirect = "cart-3.html"; // fallback
+      } else if (redirect.includes("cart-3-after-logged-in.html")) {
+        redirect = "cart-3.html"; // guest gideceği yer
       }
 
-      sessionStorage.removeItem("redirectAfterLogin"); // 🔧 Bu çok önemli
+      sessionStorage.removeItem("redirectAfterLogin");
 
       window.location.href = redirect;
     });
   }
+  // Cart-2: Ödeme butonuna tıklanırken koltuk ve kategori bilgileri de kaydedilmeli
+  const eventData = JSON.parse(sessionStorage.getItem("selectedEvent"));
+  const selectedSeats = document.querySelectorAll(".seat.selected").length;
+  const category = sessionStorage.getItem("selectedCategory") || "Category 1";
+  const categoryPrice =
+    parseFloat(sessionStorage.getItem("selectedCategoryPrice")) || 0;
 
+  const totalPrice = (eventData.price + categoryPrice) * selectedSeats;
+
+  const finalTicketData = {
+    ...eventData,
+    quantity: selectedSeats,
+    category: category,
+    categoryPrice: categoryPrice,
+    totalPrice: totalPrice,
+  };
+
+  sessionStorage.setItem("selectedEvent", JSON.stringify(finalTicketData));
   // 9️⃣ Kayıt Formu
   const registerForm = document.getElementById("register-form");
   if (registerForm) {

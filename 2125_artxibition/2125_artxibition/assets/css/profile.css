@@ -205,7 +205,7 @@ header {
 .contact-form button {
   padding: 12px;
   font-size: 15px;
-  background-color: #df6717;
+  background-color: #f97316;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -214,5 +214,5 @@ header {
 }
 
 .contact-form button:hover {
-  background-color: #e46510b0;
+  background-color: #f88132;
 }

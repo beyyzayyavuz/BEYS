@@ -17,6 +17,7 @@
 
     <link rel="stylesheet" href="assets/css/tooplate-artxibition.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/search.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/ticket.css" />
   </head>
 
   <body>
@@ -97,62 +98,35 @@
     </div>
     <!-- ***** Main Banner Area End ***** -->
 
-    <!-- Upcoming Events -->
-    <section class="venue-tickets upcoming-events-slider">
-      <div class="container-fluid p-0">
-        <div class="section-heading">
-          <h2>Upcoming Events</h2>
-        </div>
-        <div class="owl-carousel owl-theme" id="upcoming-events"></div>
-      </div>
-    </section>
+    <div class="ticket-container" id="ticket-section">
+      <h2>Your Ticket</h2>
+      <canvas id="qrCode"></canvas>
 
-    <!-- What is BEYS -->
-    <section class="beys-info">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-7">
-            <div class="left-content">
-              <h4>What is BEYS?</h4>
-              <p>BEYS is your one-stop destination for sports events...</p>
-              <p>From basketball to concerts, enjoy seamless access...</p>
-            </div>
-          </div>
-          <div class="col-lg-5">
-            <div class="stats-box">
-              <h2>BEYS in Numbers</h2>
-              <div class="stats-container">
-                <div class="stat-box">
-                  <i class="fa fa-ticket"></i>
-                  <h3>100+</h3>
-                  <p>Events</p>
-                </div>
-                <div class="stat-box">
-                  <i class="fa fa-earth"></i>
-                  <h3>5</h3>
-                  <p>Cities</p>
-                </div>
-                <div class="stat-box">
-                  <i class="fa fa-users"></i>
-                  <h3>10K+</h3>
-                  <p>Users</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="ticket-details">
+        <h2>🎫 Your Ticket</h2>
+        <p><strong>Event:</strong> <span id="ticket-event-title"></span></p>
+        <p><strong>Seats:</strong> <span id="ticket-seat-count"></span></p>
+        <p>
+          <strong>Total Paid:</strong> <span id="ticket-total-price"></span>
+        </p>
+        <img
+          src="assets/images/ticket-qr.png"
+          alt="Ticket QR"
+          style="width: 200px; margin-top: 20px"
+        />
       </div>
-    </section>
 
-    <!-- Last Time Offers -->
-    <section class="venue-tickets weekend-events-slider">
-      <div class="container-fluid p-0">
-        <div class="section-heading">
-          <h2>Last Time Offers</h2>
-        </div>
-        <div class="owl-carousel owl-theme" id="last-time-offers"></div>
-      </div>
-    </section>
+      <!-- Sabit QR Image -->
+      <img
+        src="assets/images/ticket-qr.png"
+        alt="QR Icon"
+        style="width: 100px; margin-top: 15px"
+      />
+
+      <button class="btn-download" id="downloadPDF">
+        Download Ticket as PDF
+      </button>
+    </div>
 
     <!-- *** Footer *** -->
     <footer>
@@ -231,5 +205,105 @@
     <script src="assets/js/custom.js"></script>
     <script src="assets/js/events.js"></script>
     <script src="assets/js/cart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const ticket = JSON.parse(sessionStorage.getItem("selectedEvent"));
+        const categoryPrice =
+          parseFloat(sessionStorage.getItem("selectedCategoryPrice")) || 0;
+
+        const events = [
+          {
+            id: "1",
+            title: "Fenerbahçe Beko vs Anadolu Efes",
+            date: "Thursday 20:00 to 22:30",
+            location: "Istanbul",
+            image: "assets/images/match-01.jpg",
+            price: 90,
+          },
+          {
+            id: "2",
+            title: "Beşiktaş Fibabanka vs Galatasaray NEF",
+            date: "Sunday 19:00 to 21:00",
+            location: "Istanbul",
+            image: "assets/images/match-05.jpg",
+            price: 120,
+          },
+          {
+            id: "3",
+            title: "Eczacıbaşı Dynavit vs VakıfBank",
+            date: "Saturday 17:00 to 19:00",
+            location: "Istanbul",
+            image: "assets/images/match-02.jpg",
+            price: 75,
+          },
+        ];
+
+        // ✅ Kontrol: Bilet verisi var mı?
+        if (!ticket) {
+          alert(
+            "No ticket data found in session. Please try the purchase again."
+          );
+          return;
+        }
+
+        // ✅ Eşleşen etkinliği bul
+        const match = events.find(
+          (ev) => ev.title === ticket.title || ev.title === ticket.event
+        );
+        if (!match) {
+          alert("Event details not found.");
+          return;
+        }
+
+        // ✅ Sayfadaki alanlara verileri yerleştir
+        document.getElementById("ticket-event-title").textContent = match.title;
+        document.getElementById("ticket-seat-count").textContent =
+          ticket.quantity || 1;
+
+        const totalPaid =
+          (ticket.price || match.price) * (ticket.quantity || 1) +
+          categoryPrice;
+        document.getElementById(
+          "ticket-total-price"
+        ).textContent = `$${totalPaid}`;
+
+        // ✅ QR Kodu oluştur
+        new QRious({
+          element: document.getElementById("qrCode"),
+          value: `Event: ${match.title} | Quantity: ${ticket.quantity || 1}`,
+          size: 200,
+        });
+
+        // ✅ PDF İndir
+        document.getElementById("downloadPDF").addEventListener("click", () => {
+          const { jsPDF } = window.jspdf;
+          const doc = new jsPDF();
+
+          doc.setFontSize(16);
+          doc.text("BEYS Ticket", 20, 20);
+
+          doc.setFontSize(12);
+          doc.text(`Event: ${match.title}`, 20, 40);
+          doc.text(`Date: ${match.date}`, 20, 50);
+          doc.text(`Location: ${match.location}`, 20, 60);
+          doc.text(`Quantity: ${ticket.quantity || 1}`, 20, 70);
+          doc.text(`Price (Each): $${ticket.price || match.price}`, 20, 80);
+          doc.text(`Category Fee: $${categoryPrice}`, 20, 90);
+          doc.text(`Total Paid: $${totalPaid}`, 20, 100);
+
+          const qrCanvas = document.getElementById("qrCode");
+          if (qrCanvas) {
+            const qrDataUrl = qrCanvas.toDataURL("image/png");
+            doc.addImage(qrDataUrl, "PNG", 140, 40, 50, 50);
+          }
+
+          doc.save("BEYS_Ticket.pdf");
+        });
+      });
+    </script>
   </body>
 </html>

@@ -12,7 +12,7 @@
       href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
       rel="stylesheet"
     />
-    <title>BEYS - Select Ticket Category</title>
+    <title>BEYS Payment Page</title>
 
     <!-- CSS Files -->
     <link
@@ -86,7 +86,7 @@
 
     <!-- Main Content Start -->
     <div class="cart-3-page">
-      <div class="container">
+      <div class="payment-container">
         <!-- Payment Form (Left Side) -->
         <div class="payment-form">
           <h2>Proceed to Payment</h2>
@@ -146,6 +146,13 @@
           <span class="close-btn">&times;</span>
           <h3>Your Ticket QR Code</h3>
           <div id="qrCode"></div>
+          <div id="qrInfo" class="qr-info">
+            <p><strong>Event:</strong> <span id="qr-event-title"></span></p>
+            <p><strong>Seats:</strong> <span id="qr-event-seats"></span></p>
+            <p>
+              <strong>Total Paid:</strong> $<span id="qr-event-total"></span>
+            </p>
+          </div>
           <button id="downloadTicket">Download Ticket</button>
         </div>
       </div>
@@ -332,22 +339,30 @@
         const selectedSeats = parseInt(
           sessionStorage.getItem("selectedSeatsCount") || "1"
         );
+        const categoryFee = parseFloat(
+          sessionStorage.getItem("selectedCategoryPrice") || "0"
+        );
 
         const selectedEvent = eventPricing.find(
           (e) => e.id === selectedEventId
         );
 
         if (!selectedEvent) {
-          console.error("Etkinlik bilgisi bulunamadı.");
+          console.error("Event not found!");
           return;
         }
 
-        // Fiyat hesapla ve yaz
-        const totalPrice =
-          selectedSeats * selectedEvent.price + selectedEvent.orderFee;
-        document.getElementById("ticket-price").textContent = `$${
-          selectedSeats * selectedEvent.price
-        }`;
+        const ticketTotal = selectedSeats * selectedEvent.price;
+        const categoryTotal = selectedSeats * categoryFee;
+        const orderFee = selectedEvent.orderFee;
+        const totalPrice = ticketTotal + categoryTotal + orderFee;
+
+        document.getElementById(
+          "ticket-price"
+        ).textContent = `$${ticketTotal.toFixed(2)}`;
+        document.getElementById(
+          "category-fee"
+        ).textContent = `$${categoryTotal.toFixed(2)}`;
         document.getElementById(
           "total-price"
         ).textContent = `$${totalPrice.toFixed(2)}`;
@@ -358,13 +373,14 @@
         const downloadButton = document.getElementById("downloadTicket");
         const closeButton = document.querySelector(".close-btn");
 
-        // Submit form
         document
           .getElementById("payment-form")
           .addEventListener("submit", function (e) {
             e.preventDefault();
 
-            const qrData = `Your Ticket for ${selectedEvent.title}`;
+            const qrData = `Event: ${
+              selectedEvent.title
+            } | Seats: ${selectedSeats} | Total: $${totalPrice.toFixed(2)}`;
             const qr = new QRious({
               value: qrData,
               size: 200,
@@ -374,18 +390,34 @@
             qrContainer.appendChild(qr.canvas);
             qrModal.style.display = "flex";
 
+            // Ticket bilgilerini modal içine doldur
+            document.getElementById("qr-event-title").textContent =
+              selectedEvent.title;
+            document.getElementById("qr-event-seats").textContent =
+              selectedSeats;
+            document.getElementById("qr-event-total").textContent =
+              totalPrice.toFixed(2);
+
             downloadButton.onclick = () => {
               const link = document.createElement("a");
               link.href = qr.toDataURL("image/png");
               link.download = "ticket-qr.png";
+
+              // İndirme işlemi bittikten sonra yönlendirme
+              link.addEventListener("click", () => {
+                setTimeout(() => {
+                  window.location.href = "index.html";
+                }, 1000);
+              });
+
+              document.body.appendChild(link);
               link.click();
+              document.body.removeChild(link);
             };
           });
-
-        // Modal kapatma ve yönlendirme
+        // ✅ Kapatma işlemi için bu satırı eklemelisin
         closeButton.addEventListener("click", () => {
           qrModal.style.display = "none";
-          window.location.href = "index.html";
         });
       });
     </script>
