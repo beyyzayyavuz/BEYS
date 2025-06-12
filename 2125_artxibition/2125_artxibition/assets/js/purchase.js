@@ -367,7 +367,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   sessionStorage.setItem("selectedEvent", JSON.stringify(finalTicketData));
-  // 9️⃣ Kayıt Formu
+  // Kayıt Formu
   const registerForm = document.getElementById("register-form");
   if (registerForm) {
     registerForm.addEventListener("submit", (e) => {

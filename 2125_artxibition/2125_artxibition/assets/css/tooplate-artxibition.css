@@ -2089,7 +2089,7 @@ Tickets Page
   font-size: 14px;
   padding: 12px 20px;
   background-color: #e6e7e8;
-  color: #2a2a2a;
+  color: #2c3b57da;
   text-align: center;
   font-weight: 500;
   text-transform: capitalize;
@@ -2098,7 +2098,7 @@ Tickets Page
 
 .tickets-page .pagination ul li a:hover,
 .tickets-page .pagination ul li.active a {
-  background-color: #343a3e;
+  background-color: #2c3b57da;
   color: #fff !important;
 }
 
