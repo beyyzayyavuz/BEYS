@@ -1,5 +1,3 @@
-// events.js
-
 document.addEventListener("DOMContentLoaded", () => {
   const isLoggedIn = sessionStorage.getItem("isLoggedIn") === "true";
   const purchaseLink = isLoggedIn
@@ -12,8 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Fenerbahçe Beko vs Anadolu Efes",
       desc: "Ülker Sports Arena, İstanbul",
       image: "assets/images/match-01.jpg",
-      capacity: 250,
-      audience: 500,
+      date: "Thursday 18:00 - 22:00",
       category: "upcoming",
     },
     {
@@ -21,8 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Beşiktaş Fibabanka vs Galatasaray NEF",
       desc: "Akatlar Spor Kompleksi, İstanbul",
       image: "assets/images/match-05.jpg",
-      capacity: 450,
-      audience: 650,
+      date: "Friday 19:00 - 21:30",
       category: "upcoming",
     },
     {
@@ -30,8 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Eczacıbaşı Dynavit vs VakıfBank",
       desc: "Burhan Felek Vestel Voleybol Salonu",
       image: "assets/images/match-02.jpg",
-      capacity: 250,
-      audience: 500,
+      date: "Saturday 17:00 - 19:00",
       category: "upcoming",
     },
     {
@@ -39,8 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Pınar Karşıyaka vs Darüşşafaka",
       desc: "Karşıyaka Spor Salonu, İzmir",
       image: "assets/images/match-13.jpg",
-      capacity: 350,
-      audience: 420,
+      date: "Sunday 16:00 - 18:00",
       category: "upcoming",
     },
     {
@@ -48,8 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Ankara DSİ vs İstanbul BŞB",
       desc: "Ankara Spor Kompleksi, Ankara",
       image: "assets/images/match-14.jpg",
-      capacity: 280,
-      audience: 320,
+      date: "Monday 20:00 - 22:00",
       category: "upcoming",
     },
     {
@@ -57,8 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "TED Ankara Kolejliler vs Gaziantep Basketbol",
       desc: "TED Koleji Spor Salonu, Ankara",
       image: "assets/images/match-15.jpg",
-      capacity: 220,
-      audience: 260,
+      date: "Wednesday 18:00 - 20:00",
       category: "upcoming",
     },
     {
@@ -66,8 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Galatasaray A.Ş vs Trabzonspor",
       desc: "RAMS Park, İstanbul",
       image: "assets/images/match-04.jpg",
-      capacity: 52000,
-      audience: 49000,
+      date: "Sunday 21:00 - 23:00",
       category: "last",
     },
     {
@@ -75,8 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Fenerbahçe vs Adana Demirspor",
       desc: "Şükrü Saracoğlu Stadyumu, İstanbul",
       image: "assets/images/match-06.jpg",
-      capacity: 47000,
-      audience: 43000,
+      date: "Saturday 20:00 - 22:30",
       category: "last",
     },
     {
@@ -84,8 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Ziraat Bankkart vs Halkbank",
       desc: "Başkent Voleybol Salonu, Ankara",
       image: "assets/images/match-07.jpg",
-      capacity: 1800,
-      audience: 1600,
+      date: "Friday 17:30 - 19:30",
       category: "last",
     },
     {
@@ -93,8 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "İpek Soylu vs Zeynep Sönmez",
       desc: "TED Spor Kulübü, İstanbul",
       image: "assets/images/match-03.jpg",
-      capacity: 500,
-      audience: 450,
+      date: "Tuesday 15:00 - 17:00",
       category: "just-for-you",
     },
     {
@@ -102,8 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Türkiye vs İtalya (Kadın Voleybol)",
       desc: "Ankara Spor Salonu",
       image: "assets/images/match-08.jpg",
-      capacity: 10000,
-      audience: 9500,
+      date: "Thursday 19:00 - 21:00",
       category: "just-for-you",
     },
     {
@@ -111,8 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Efes Pilsen vs Pınar Karşıyaka",
       desc: "Sinan Erdem Spor Salonu, İstanbul",
       image: "assets/images/match-09.jpg",
-      capacity: 16000,
-      audience: 15500,
+      date: "Monday 18:00 - 20:30",
       category: "just-for-you",
     },
     {
@@ -120,8 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Galatasaray vs Fenerbahçe",
       desc: "Ali Sami Yen Spor Kompleksi, İstanbul",
       image: "assets/images/match-10.jpg",
-      capacity: 52000,
-      audience: 51500,
+      date: "Sunday 21:45 - 00:00",
       category: "just-for-you",
     },
     {
@@ -129,8 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Türkiye vs Sırbistan (Basketbol)",
       desc: "Ülker Spor ve Etkinlik Salonu, İstanbul",
       image: "assets/images/match-11.jpg",
-      capacity: 13000,
-      audience: 12750,
+      date: "Saturday 20:30 - 23:00",
       category: "just-for-you",
     },
     {
@@ -138,8 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Beşiktaş vs Trabzonspor",
       desc: "Vodafone Park, İstanbul",
       image: "assets/images/match-12.jpg",
-      capacity: 42000,
-      audience: 40000,
+      date: "Friday 21:00 - 23:15",
       category: "just-for-you",
     },
   ];
@@ -149,34 +132,30 @@ document.addEventListener("DOMContentLoaded", () => {
   const justForYou = document.getElementById("just-for-you-events");
   const allEvents = document.getElementById("all-events");
 
-  /*logged-in olduysa kullanıcı ana sayfada favori butonu gözükecek ve özellik aktif olacak*/
   events.forEach((event) => {
     let favBtn = "";
     if (isLoggedIn) {
       favBtn = `
-      <button class="fav-btn">
-        <i class="fa fa-heart-o"></i>
-      </button>`;
+        <button class="fav-btn">
+          <i class="fa fa-heart-o"></i>
+        </button>`;
     }
 
     const card = `
-    <div class="venue-item" data-id="${event.id}">
-      ${favBtn}
-      <div class="thumb"><img src="${event.image}" alt="${event.title}"></div>
-      <div class="down-content">
-        <h4>${event.title}</h4>
-        <p>${event.desc}</p>
-        <ul>
-          <li><i class="fa fa-sitemap"></i>${event.capacity}</li>
-          <li><i class="fa fa-user"></i>${event.audience}</li>
-        </ul>
-        <div class="main-white-button">
-          <a href="${purchaseLink}" class="purchase-link" data-id="${event.id}">Purchase Tickets</a>
-        </div>
-      </div>
-    </div>`;
+      <div class="venue-item" data-id="${event.id}">
+        ${favBtn}
+        <div class="thumb"><img src="${event.image}" alt="${event.title}"></div>
+        <div class="down-content">
+          <h4>${event.title}</h4>
+          <p><i class="fa fa-map-marker"></i> ${event.desc}</p>
 
-    // Kategorilere göre ekle
+          <p><i class="fa fa-calendar"></i> ${event.date}</p>
+          <div class="main-white-button">
+            <a href="${purchaseLink}" class="purchase-link" data-id="${event.id}">Purchase Tickets</a>
+          </div>
+        </div>
+      </div>`;
+
     if (event.category === "upcoming" && upcoming)
       upcoming.insertAdjacentHTML("beforeend", card);
     else if (event.category === "last" && last)
@@ -184,13 +163,12 @@ document.addEventListener("DOMContentLoaded", () => {
     else if (event.category === "just-for-you" && justForYou)
       justForYou.insertAdjacentHTML("beforeend", card);
 
-    // Hepsini All Events'te göster
     if (allEvents) allEvents.insertAdjacentHTML("beforeend", card);
   });
 
   initSliders();
 
-  // FAVORİ BUTONLARI (Sadece login varsa)
+  // Favori butonları
   if (isLoggedIn) {
     let favorites = JSON.parse(sessionStorage.getItem("favorites")) || [];
 
@@ -202,21 +180,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (favorites.includes(eventId)) {
           btn.classList.add("active");
-          btn.querySelector("i").classList.remove("fa-heart-o");
-          btn.querySelector("i").classList.add("fa-heart");
+          btn.querySelector("i").classList.replace("fa-heart-o", "fa-heart");
         }
 
         btn.addEventListener("click", () => {
           if (favorites.includes(eventId)) {
             favorites = favorites.filter((id) => id !== eventId);
             btn.classList.remove("active");
-            btn.querySelector("i").classList.add("fa-heart-o");
-            btn.querySelector("i").classList.remove("fa-heart");
+            btn.querySelector("i").classList.replace("fa-heart", "fa-heart-o");
           } else {
             favorites.push(eventId);
             btn.classList.add("active");
-            btn.querySelector("i").classList.remove("fa-heart-o");
-            btn.querySelector("i").classList.add("fa-heart");
+            btn.querySelector("i").classList.replace("fa-heart-o", "fa-heart");
           }
           sessionStorage.setItem("favorites", JSON.stringify(favorites));
         });
@@ -225,7 +200,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// PURCHASE LINK TIKLAMASI
+// Purchase Tickets tıklaması
 document.body.addEventListener("click", function (e) {
   if (e.target.classList.contains("purchase-link")) {
     e.preventDefault();
@@ -238,6 +213,8 @@ document.body.addEventListener("click", function (e) {
       : "event-details.html";
   }
 });
+
+// Search filtre (sadece just-for-you içindir)
 function attachSearchFilter() {
   const searchInput = document.getElementById("eventSearchInput");
   if (!searchInput) return;
@@ -258,25 +235,23 @@ function attachSearchFilter() {
     });
   });
 }
+
 // Owl Carousel tamamlandığında filtre başlatmak için gözlemci kur
 function waitForOwlItemsAndAttachFilter() {
   const container = document.querySelector("#just-for-you-events .owl-stage");
 
-  if (!container) {
-    console.warn("Owl stage not found");
-    return;
-  }
+  if (!container) return;
 
   const observer = new MutationObserver((mutations, obs) => {
     const owlItems = container.querySelectorAll(".owl-item");
     if (owlItems.length > 0) {
-      attachSearchFilter(); // artık kartlar DOM'da
-      obs.disconnect(); // gözlemlemeye gerek kalmadı
+      attachSearchFilter();
+      obs.disconnect();
     }
   });
 
   observer.observe(container, { childList: true, subtree: true });
 }
 
-initSliders(); // slider'ı başlat
-waitForOwlItemsAndAttachFilter(); // DOM’a geldiklerinde filtreyi bağla
+initSliders();
+waitForOwlItemsAndAttachFilter();
