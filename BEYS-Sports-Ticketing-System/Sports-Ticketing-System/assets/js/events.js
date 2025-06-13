@@ -1,9 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Sayfa tamamen yüklendikten sonra çalışması için DOMContentLoaded kullanılır
+  // Kullanıcının giriş yapıp yapmadığını sessionStorage üzerinden kontrol eder
   const isLoggedIn = sessionStorage.getItem("isLoggedIn") === "true";
   const purchaseLink = isLoggedIn
     ? "event-details-after-logged-in.html"
     : "event-details.html";
-
+  // Etkinlik verileri: her bir etkinlik kartının başlık, açıklama, görsel, tarih ve kategorisi
   const events = [
     {
       id: "1",
@@ -126,20 +128,24 @@ document.addEventListener("DOMContentLoaded", () => {
       category: "just-for-you",
     },
   ];
-
+  // Sayfa üzerinde ilgili kategori bölümlerinin DOM elementlerini alıyoruz
   const upcoming = document.getElementById("upcoming-events");
   const last = document.getElementById("last-time-offers");
   const justForYou = document.getElementById("just-for-you-events");
   const allEvents = document.getElementById("all-events");
 
+  // Her etkinliği tek tek işleyip ilgili bölüme kart olarak ekle
   events.forEach((event) => {
     let favBtn = "";
+    // Eğer kullanıcı giriş yaptıysa kartlara favori butonu ekle
     if (isLoggedIn) {
       favBtn = `
         <button class="fav-btn">
           <i class="fa fa-heart-o"></i>
         </button>`;
     }
+
+    // Etkinlik kartı HTML yapısı burada oluşturulur
 
     const card = `
       <div class="venue-item" data-id="${event.id}">
@@ -156,6 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       </div>`;
 
+    // Etkinlik kategori bilgisine göre doğru alana kartı yerleştir
     if (event.category === "upcoming" && upcoming)
       upcoming.insertAdjacentHTML("beforeend", card);
     else if (event.category === "last" && last)
@@ -166,23 +173,27 @@ document.addEventListener("DOMContentLoaded", () => {
     if (allEvents) allEvents.insertAdjacentHTML("beforeend", card);
   });
 
+  // Slider yapısını başlatır (örneğin Owl Carousel)
+  //Slider kullanımda değil.
   initSliders();
 
+  // Favorilere ekleme sistemi sadece giriş yapılmışsa aktif edilir
   // Favori butonları
   if (isLoggedIn) {
     let favorites = JSON.parse(sessionStorage.getItem("favorites")) || [];
 
+    // Kartlar DOM’a yerleştirildikten sonra butonları işlemek için kısa gecikme verilir
     setTimeout(() => {
       const favButtons = document.querySelectorAll(".fav-btn");
 
       favButtons.forEach((btn) => {
         const eventId = btn.closest(".venue-item").getAttribute("data-id");
-
+        // Daha önce favorilere eklenmişse ikonu doldurulmuş kalp olarak göster
         if (favorites.includes(eventId)) {
           btn.classList.add("active");
           btn.querySelector("i").classList.replace("fa-heart-o", "fa-heart");
         }
-
+        // Favori butonuna tıklandığında favoriye ekle/çıkar işlemi yapılır
         btn.addEventListener("click", () => {
           if (favorites.includes(eventId)) {
             favorites = favorites.filter((id) => id !== eventId);
@@ -193,10 +204,11 @@ document.addEventListener("DOMContentLoaded", () => {
             btn.classList.add("active");
             btn.querySelector("i").classList.replace("fa-heart-o", "fa-heart");
           }
+          // Favoriler sessionStorage’a kaydedilir
           sessionStorage.setItem("favorites", JSON.stringify(favorites));
         });
       });
-    }, 500);
+    }, 500); // DOM yerleşmesi için kısa gecikme
   }
 });
 
@@ -204,9 +216,11 @@ document.addEventListener("DOMContentLoaded", () => {
 document.body.addEventListener("click", function (e) {
   if (e.target.classList.contains("purchase-link")) {
     e.preventDefault();
+    // Etkinlik ID'sini al ve sessionStorage'a kaydet
     const eventId = e.target.getAttribute("data-id");
     sessionStorage.setItem("selectedEventId", eventId);
 
+    // Giriş durumuna göre doğru sayfaya yönlendirme yap
     const isLoggedIn = sessionStorage.getItem("isLoggedIn") === "true";
     window.location.href = isLoggedIn
       ? "event-details-after-logged-in.html"
@@ -218,7 +232,7 @@ document.body.addEventListener("click", function (e) {
 function attachSearchFilter() {
   const searchInput = document.getElementById("eventSearchInput");
   if (!searchInput) return;
-
+  // Kullanıcı her yazdığında inputa göre filtre uygulanır
   searchInput.addEventListener("input", function () {
     const searchTerm = searchInput.value.toLowerCase();
 
@@ -231,12 +245,13 @@ function attachSearchFilter() {
       if (!titleElement) return;
 
       const title = titleElement.textContent.toLowerCase();
+      // Eşleşmeyen kartlar gizlenir
       item.style.display = title.includes(searchTerm) ? "block" : "none";
     });
   });
 }
 
-// Owl Carousel tamamlandığında filtre başlatmak için gözlemci kur
+// Owl Carousel yüklenip tamamlandıktan sonra filtre işlevini başlatmak için gözlemci tanımlanır
 function waitForOwlItemsAndAttachFilter() {
   const container = document.querySelector("#just-for-you-events .owl-stage");
 
@@ -245,13 +260,13 @@ function waitForOwlItemsAndAttachFilter() {
   const observer = new MutationObserver((mutations, obs) => {
     const owlItems = container.querySelectorAll(".owl-item");
     if (owlItems.length > 0) {
-      attachSearchFilter();
-      obs.disconnect();
+      attachSearchFilter(); // filtre işlevi başlatılır
+      obs.disconnect(); // gözlem durdurulur
     }
   });
-
+  // DOM’daki değişimleri gözlemler
   observer.observe(container, { childList: true, subtree: true });
 }
-
+// Sliders ve filtre sistemi başlatılır
 initSliders();
 waitForOwlItemsAndAttachFilter();

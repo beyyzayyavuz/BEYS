@@ -1,13 +1,12 @@
-// ==============================
-// EVENT TICKETS FLOW - purchase.js (Tam Akış)
-// ==============================
+// Sayfa yüklendiğinde tüm işlemleri başlat
 document.addEventListener("DOMContentLoaded", () => {
-  // 1️⃣ Ana Sayfa: Purchase Ticket Tıklama
+  // Ana Sayfa: Purchase Ticket Tıklama
+  // Ana sayfada "Purchase Tickets" butonuna tıklanınca seçilen etkinlik sessionStorage'a kaydedilir
   document.body.addEventListener("click", (e) => {
     if (e.target.classList.contains("purchase-link")) {
       e.preventDefault();
       const eventId = e.target.getAttribute("data-id");
-
+      // Etkinlik listesi (veritabanı yerine burada sabit tanımlı)
       const events = [
         {
           id: "1",
@@ -130,21 +129,24 @@ document.addEventListener("DOMContentLoaded", () => {
           price: 45,
         },
       ];
-
+      // Tıklanan etkinlik bilgisi bulunur
       const selectedEvent = events.find((ev) => ev.id === eventId);
       if (selectedEvent) {
+        // Etkinlik bilgisi sessionStorage'a kaydedilir
         sessionStorage.setItem("selectedEvent", JSON.stringify(selectedEvent));
+        // Kullanıcı event-details.html sayfasına yönlendirilir
         window.location.href = "event-details.html";
       }
     }
   });
 
-  // 2️⃣ Event Details Sayfası: Event Bilgisi Göster & Purchase
+  // Event Details Sayfası: Event Bilgisi Göster & Purchase
   const eventPurchaseBtn = document.getElementById("purchase-button");
   if (eventPurchaseBtn) {
     const eventData = JSON.parse(sessionStorage.getItem("selectedEvent"));
 
     if (eventData) {
+      // Etkinlik bilgileri ilgili alanlara yazılır
       document.getElementById("event-title").textContent = eventData.title;
       document.getElementById("event-date").textContent = eventData.date;
       document.getElementById("event-location").textContent =
@@ -157,14 +159,14 @@ document.addEventListener("DOMContentLoaded", () => {
         "event-fee"
       ).textContent = `$${eventData.serviceFee}`;
     }
-
+    // Kullanıcı "Purchase" butonuna basarsa kategori seçimi sayfasına gider
     eventPurchaseBtn.addEventListener("click", (e) => {
       e.preventDefault();
       window.location.href = "cart-1.html";
     });
   }
 
-  /* 3️⃣ Cart-1: Kategori Seçimi
+  /* Cart-1: Kategori Seçimi
   const categoryBoxes = document.querySelectorAll(".category-box");
   if (categoryBoxes.length) {
     categoryBoxes.forEach((box) => {
@@ -176,7 +178,8 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }*/
-  // 3️⃣ Cart-1: Kategori Seçimi
+  // Cart-1: Kategori Seçimi
+  // Kategori seçim sayfasında (cart-1.html) kullanıcı kategori seçer ve fiyat hesaplanır
   const categoryBoxes = document.querySelectorAll(".category-box");
   if (categoryBoxes.length) {
     const eventData = JSON.parse(sessionStorage.getItem("selectedEvent"));
@@ -192,7 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (priceEl) {
         priceEl.textContent = `₺${finalPrice}`;
       }
-
+      // Kullanıcı kategoriye tıkladığında sessionStorage'a kaydedilir ve koltuk seçim sayfasına gider
       // Butona tıklanınca seçimi kaydet
       box.querySelector("button").addEventListener("click", (e) => {
         e.preventDefault();
@@ -203,7 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 4️⃣ Cart-2: Koltuk Seçimi ve Bilgiler
+  // Koltuk seçimi sayfası (cart-2.html): Koltuklar seçilir, özet gösterilir
   const seatGrid = document.querySelector(".seat-grid");
   if (seatGrid) {
     const eventData = JSON.parse(sessionStorage.getItem("selectedEvent"));
@@ -241,7 +244,7 @@ document.addEventListener("DOMContentLoaded", () => {
           seat.classList.add("seat");
           seat.dataset.row = r;
           seat.dataset.col = c;
-
+          // Koltuğa tıklanınca seçme/çıkarma işlemi yapılır
           seat.addEventListener("click", () => {
             seat.classList.toggle("selected");
             updateSummary();
@@ -252,7 +255,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         seatGrid.appendChild(rowDiv);
       }
-
+      // Alt satıra kolon numaraları eklenir
       const footer = document.createElement("div");
       footer.classList.add("seat-footer");
       footer.innerHTML =
@@ -261,7 +264,7 @@ document.addEventListener("DOMContentLoaded", () => {
           ""
         );
       seatGrid.appendChild(footer);
-
+      // Seçilen koltuk sayısı ve toplam fiyat güncellenir
       function updateSummary() {
         const count = document.querySelectorAll(".seat.selected").length;
         document.getElementById("selected-count").textContent = count;
@@ -272,8 +275,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // 5️⃣ Payment Butonu
-  // 5️⃣ Payment Butonu
+  // Ödeme butonuna tıklanınca login durumuna göre yönlendirme yapılır
   const paymentBtn = document.getElementById("payment-button");
   if (paymentBtn) {
     paymentBtn.addEventListener("click", (e) => {
@@ -296,7 +298,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 6️⃣ Login Linki
+  // Login linkine tıklanırsa yönlendirme adresi belirlenir
   document.body.addEventListener("click", function (e) {
     if (e.target.classList.contains("login-nav-text")) {
       e.preventDefault();
@@ -305,7 +307,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // 7️⃣ Login İşlemi
+  // Login formu gönderildiğinde giriş yapılmış kabul edilir
   const loginForm = document.getElementById("login-form");
   if (loginForm) {
     loginForm.addEventListener("submit", (e) => {
@@ -321,8 +323,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  //guest işlemlerii
-
+  // Login formu gönderildiğinde giriş yapılmış kabul edilir
   const guestBtn = document.getElementById("continue-as-guest");
 
   if (guestBtn) {
@@ -368,6 +369,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   sessionStorage.setItem("selectedEvent", JSON.stringify(finalTicketData));
   // Kayıt Formu
+  // Register formu gönderilince login sayfasına yönlendirme yapılır
   const registerForm = document.getElementById("register-form");
   if (registerForm) {
     registerForm.addEventListener("submit", (e) => {

@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const cartTotalQuantityEl = document.getElementById("cart-total-quantity");
   const cartTotalPriceEl = document.getElementById("cart-total-price");
 
-  // 🟡 Etkinlikler: title, price, date, desc (yer)
+  // Tüm etkinlikler: ID, başlık, fiyat, tarih ve açıklama içeriyor.
+  // Bu liste sepetteki ürünlerle eşleştirme ve detay gösterimi için kullanılıyor.
   const events = [
     {
       id: "1",
@@ -111,13 +112,16 @@ document.addEventListener("DOMContentLoaded", function () {
       desc: "Vodafone Park, İstanbul",
     },
   ];
-
+  // Kullanıcının sepetini sessionStorage üzerinden alıyoruz (varsa), yoksa boş dizi tanımlanır.
   let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
 
+  // Sepeti sayfada render eden fonksiyon
+  // The renderCart() function updates the shopping cart display based on the current items in memory, ensuring the UI reflects the actual data at all times.
   function renderCart() {
     if (!cartItemsEl) return;
     cartItemsEl.innerHTML = "";
 
+    // Sepetteki her ürün için HTML öğesi oluşturulur
     cart.forEach((item, index) => {
       const eventInfo = events.find((ev) => ev.title === item.event);
       const eventDate = eventInfo ? eventInfo.date : "Date not available";
@@ -142,17 +146,20 @@ document.addEventListener("DOMContentLoaded", function () {
       cartItemsEl.insertAdjacentHTML("beforeend", itemHTML);
     });
 
+    // Sepet adedi ve toplam fiyat (gerekirse) güncellenebilir
     if (cartTotalQuantityEl) cartTotalQuantityEl.textContent = cart.length;
-    if (cartTotalPriceEl) cartTotalPriceEl.textContent = "";
+    if (cartTotalPriceEl) cartTotalPriceEl.textContent = ""; //hesap yapmıyor ama ileride kullanılabilir
   }
 
+  // Sayfa içindeki buton tıklamalarını dinleyen ana event listener
   document.body.addEventListener("click", function (e) {
-    // ➕ Add to Cart
+    //  Add to Cart
     if (e.target.classList.contains("add-to-cart-btn")) {
       e.preventDefault();
       const card = e.target.closest(".venue-item, .right-content");
       if (!card) return;
 
+      // Etkinlik adı HTML'den çekilir
       const eventName =
         card.querySelector("h4")?.textContent || "Unnamed Event";
       const matchedEvent = events.find((ev) => ev.title === eventName);
@@ -162,11 +169,11 @@ document.addEventListener("DOMContentLoaded", function () {
         event: eventName,
         price: eventPrice,
       };
-
+      // Sepete ekleme işlemi
       cart.push(cartItem);
       sessionStorage.setItem("cart", JSON.stringify(cart));
       alert(`${eventName} added to cart!`);
-
+      // Login durumuna göre ilgili sayfaya yönlendirme yapılır
       const isLoggedIn = sessionStorage.getItem("isLoggedIn") === "true";
       window.location.href = isLoggedIn
         ? "event-details-after-logged-in.html"
@@ -175,19 +182,19 @@ document.addEventListener("DOMContentLoaded", function () {
       renderCart();
     }
 
-    // ❌ Remove from Cart
+    // Remove from Cart
     if (e.target.classList.contains("remove-item")) {
       const index = parseInt(
         e.target.closest(".cart-item")?.getAttribute("data-index")
       );
       if (!isNaN(index)) {
-        cart.splice(index, 1);
+        cart.splice(index, 1); // belirtilen indeksteki ürün silinir
         sessionStorage.setItem("cart", JSON.stringify(cart));
-        renderCart();
+        renderCart(); // sepet yeniden çizilir
       }
     }
 
-    // 🎟️ Purchase Ticket
+    // Purchase Ticket
     if (e.target.classList.contains("purchase-item")) {
       e.preventDefault();
       const index = parseInt(e.target.getAttribute("data-index"));
@@ -199,6 +206,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   });
-
+  // Sayfa yüklendiğinde sepeti otomatik olarak çiz
   renderCart();
 });

@@ -1,12 +1,16 @@
+// Sayfa tamamen yüklendikten sonra çalışacak işlemleri başlatır
 document.addEventListener("DOMContentLoaded", () => {
+  // Favoriler bölümünün yerleştirileceği HTML alanını seçiyoruz
   const favoritesContainer = document.getElementById("favorites-container");
+  // Kullanıcının favori etkinliklerini sessionStorage'tan alıyoruz
   let favorites = JSON.parse(sessionStorage.getItem("favorites")) || [];
-
+  // Eğer hiç favori yoksa kullanıcıya bilgi verilir ve işlem sonlandırılır
   if (favorites.length === 0) {
+    // Sayfaya yeni içerik eklemeden önce favoriler kutusunu temizleriz
     favoritesContainer.innerHTML = "<p>No favorites yet.</p>";
     return;
   }
-
+  // Tüm etkinliklerin bilgileri burada tutulur (title, date, desc)
   const events = [
     {
       id: "1",
@@ -101,9 +105,10 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   favoritesContainer.innerHTML = ""; // Temizle
-
+  // Her favori ID'si için ilgili etkinliği bulup kart oluşturmaya başlıyoruz
   favorites.forEach((favId, index) => {
     const event = events.find((e) => e.id === favId);
+    // Etkinlik bulunduysa HTML kartı hazırlanır ve sayfaya eklenir
     if (event) {
       const itemHTML = `
         <div class="fav-item" data-index="${index}">
@@ -121,24 +126,30 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Kullanıcı bir favoriyi silmek istediğinde çalışacak olay
   // Remove button işlemi
   favoritesContainer.addEventListener("click", (e) => {
     if (e.target.classList.contains("remove-fav-btn")) {
+      // Kart üzerindeki index numarasına göre favoriden silinir
       const index = parseInt(
         e.target.closest(".fav-item").getAttribute("data-index")
       );
+      // Favoriler listesinden ilgili ID çıkarılır ve sessionStorage güncellenir
       favorites.splice(index, 1);
       sessionStorage.setItem("favorites", JSON.stringify(favorites));
+      // Sayfa yenilenir, değişiklik yansıtılır
       location.reload();
     }
   });
 
-  // Purchase Tickets tıklaması
+  // Purchase Tickets (Bilet Satın Al) butonuna basıldığında yapılacak işlemler
   favoritesContainer.addEventListener("click", (e) => {
     if (e.target.classList.contains("purchase-link")) {
-      e.preventDefault();
+      e.preventDefault(); // Linkin varsayılan davranışı engellenir
+      // Seçilen etkinliğin ID’si sessionStorage’a kaydedilir
       const eventId = e.target.getAttribute("data-id");
       sessionStorage.setItem("selectedEventId", eventId);
+      // Kullanıcı detay sayfasına yönlendirilir işlem bitti artık
       window.location.href = "event-details-after-logged-in.html";
     }
   });
