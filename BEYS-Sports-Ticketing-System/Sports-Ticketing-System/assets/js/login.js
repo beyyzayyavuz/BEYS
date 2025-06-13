@@ -9,6 +9,28 @@ document.addEventListener("DOMContentLoaded", function () {
   const registerLinks = document.querySelectorAll(".register-link");
   const guestLinks = document.querySelectorAll(".guest-link");
 
+  const forgotForm = document.querySelector(".form-box.forgot");
+  const forgotLinks = document.querySelectorAll(".forgot-link");
+
+  // Başlangıçta forgot formu gizli başlar
+  forgotForm.classList.add("exit-left");
+
+  // Forgot'a geçiş
+  forgotLinks.forEach((link) => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      loginForm.classList.remove("active");
+      registerForm.classList.remove("active");
+      guestForm.classList.remove("active");
+
+      loginForm.classList.add("exit-left");
+      registerForm.classList.add("exit-left");
+      guestForm.classList.add("exit-left");
+
+      forgotForm.classList.remove("exit-left");
+      forgotForm.classList.add("active");
+    });
+  });
   // Sayfa ilk açıldığında login formu aktif olarak gösterilir
   // Başlangıç durumu
   loginForm.classList.add("active");

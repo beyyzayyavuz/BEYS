@@ -17,6 +17,7 @@
     
     <link rel="stylesheet" href="assets/css/profile.css" />
     <link rel="stylesheet" href="assets/css/tooplate-artxibition.css" />
+    <link rel="stylesheet" href="assets/css/notification.css" />
     
   </head>
 
@@ -82,7 +83,7 @@
                 <li><a href="cart.html" >My Cart</a></li>
                 <li><a href="profile.html" class="active">My Profile</a></li>
                 <li>
-                  <a
+                   <a
                     href="notification.html"
                     class="notification-icon"
                     style="position: relative"
@@ -111,66 +112,19 @@
 
 </head>
 <body>
-  <div class="container profile-container">
-    <div class="sidebar">
-      <div class="avatar">
-        <i class="fa fa-user"></i>
-      </div>
-      <strong id="username">Welcome</strong>
-      <ul>
-        <li><a href="cart.html">My Cart</a></li>
-        <li><a href="favorites.html">My Favorites</a></li>
-        <li><a href="account-settings.html">Account Settings</a></li>
-      </ul>
-      <a href="#" class="logout" id="logout">Logout</a>
-    </div>
-
-    <div class="profile-form">
-      <form>
-        <div class="row">
-          <div class="col-md-6 mb-3">
-            <input type="text" class="form-control" placeholder="First Name">
-          </div>
-          <div class="col-md-6 mb-3">
-            <input type="text" class="form-control" placeholder="Last Name">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6 mb-3">
-            <input type="date" class="form-control" placeholder="Birth of Date">
-          </div>
-          <div class="col-md-6 mb-3">
-            <select class="form-control">
-              <option>Gender</option>
-              <option>Male</option>
-              <option>Female</option>
-              <option>Other</option>
-            </select>
-          </div>
-        </div>
-        <div class="mb-3">
-          <input type="text" class="form-control" placeholder="Country Code">
-        </div>
-        <div class="profile-buttons">
-          <button type="submit" class="btn btn-primary">Update</button>
-          <button type="button" class="btn btn-danger">Delete Account</button>
-        </div>
-      </form>
-    </div>
+  <div class="notification-wrapper">
+  <div class="notification-card">
+    <h5>Your Favorite Team is on the Field!</h5>
+    <p>The match between Fenerbahçe Beko and Anadolu Efes is happening this week. Get your tickets now!</p>
   </div>
 
-  <script>
-    // Kullanıcı adını göster
-    const username = sessionStorage.getItem("username") || "User";
-    document.getElementById("username").textContent = `Welcome ${username}`;
+  <div class="notification-card">
+    <h5>An Event You Might Like</h5>
+    <p>The Beşiktaş Fibabanka vs Galatasaray NEF game is coming up. Looks like you enjoy this kind of matchup!</p>
+  </div>
+</div>
 
-    // Logout işlemi
-    document.getElementById("logout").addEventListener("click", (e) => {
-      e.preventDefault();
-      sessionStorage.clear();
-      window.location.href = "login.html";
-    });
-  </script>
+ 
     <!-- *** Footer *** -->
     <footer>
       <div class="container">

@@ -414,10 +414,15 @@
               link.click();
               document.body.removeChild(link);
 
-              // 1 saniye sonra ana sayfaya yönlendir
+              // Kullanıcıya bilgi ver
+              alert(
+                "Your ticket has been successfully downloaded. Enjoy the event!"
+              );
+
+              // 2 saniye sonra ana sayfaya yönlendir
               setTimeout(() => {
                 window.location.href = "index-after-logged-in.html";
-              }, 1000);
+              }, 2000);
             };
           });
         //  Kapatma işlemi için bu satırı eklemelisin

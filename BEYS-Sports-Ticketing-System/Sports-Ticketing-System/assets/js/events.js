@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Fenerbahçe Beko vs Anadolu Efes",
       desc: "Ülker Sports Arena, İstanbul",
       image: "assets/images/match-01.jpg",
-      date: "Thursday 18:00 - 22:00",
+      date: "June 20, 18:00",
       category: "upcoming",
     },
     {
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Beşiktaş Fibabanka vs Galatasaray NEF",
       desc: "Akatlar Spor Kompleksi, İstanbul",
       image: "assets/images/match-05.jpg",
-      date: "Friday 19:00 - 21:30",
+      date: "June 21, 19:00",
       category: "upcoming",
     },
     {
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Eczacıbaşı Dynavit vs VakıfBank",
       desc: "Burhan Felek Vestel Voleybol Salonu",
       image: "assets/images/match-02.jpg",
-      date: "Saturday 17:00 - 19:00",
+      date: "June 22, 17:00",
       category: "upcoming",
     },
     {
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Pınar Karşıyaka vs Darüşşafaka",
       desc: "Karşıyaka Spor Salonu, İzmir",
       image: "assets/images/match-13.jpg",
-      date: "Sunday 16:00 - 18:00",
+      date: "June 23, 16:00",
       category: "upcoming",
     },
     {
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Ankara DSİ vs İstanbul BŞB",
       desc: "Ankara Spor Kompleksi, Ankara",
       image: "assets/images/match-14.jpg",
-      date: "Monday 20:00 - 22:00",
+      date: "June 24, 20:00",
       category: "upcoming",
     },
     {
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "TED Ankara Kolejliler vs Gaziantep Basketbol",
       desc: "TED Koleji Spor Salonu, Ankara",
       image: "assets/images/match-15.jpg",
-      date: "Wednesday 18:00 - 20:00",
+      date: "June 25, 18:00",
       category: "upcoming",
     },
     {
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Galatasaray A.Ş vs Trabzonspor",
       desc: "RAMS Park, İstanbul",
       image: "assets/images/match-04.jpg",
-      date: "Sunday 21:00 - 23:00",
+      date: "June 23, 21:00",
       category: "last",
     },
     {
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Fenerbahçe vs Adana Demirspor",
       desc: "Şükrü Saracoğlu Stadyumu, İstanbul",
       image: "assets/images/match-06.jpg",
-      date: "Saturday 20:00 - 22:30",
+      date: "June 22, 20:00",
       category: "last",
     },
     {
@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Ziraat Bankkart vs Halkbank",
       desc: "Başkent Voleybol Salonu, Ankara",
       image: "assets/images/match-07.jpg",
-      date: "Friday 17:30 - 19:30",
+      date: "June 21, 17:30",
       category: "last",
     },
     {
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "İpek Soylu vs Zeynep Sönmez",
       desc: "TED Spor Kulübü, İstanbul",
       image: "assets/images/match-03.jpg",
-      date: "Tuesday 15:00 - 17:00",
+      date: "June 18, 15:00",
       category: "just-for-you",
     },
     {
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Türkiye vs İtalya (Kadın Voleybol)",
       desc: "Ankara Spor Salonu",
       image: "assets/images/match-08.jpg",
-      date: "Thursday 19:00 - 21:00",
+      date: "June 20, 19:00",
       category: "just-for-you",
     },
     {
@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Efes Pilsen vs Pınar Karşıyaka",
       desc: "Sinan Erdem Spor Salonu, İstanbul",
       image: "assets/images/match-09.jpg",
-      date: "Monday 18:00 - 20:30",
+      date: "June 24, 18:00",
       category: "just-for-you",
     },
     {
@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Galatasaray vs Fenerbahçe",
       desc: "Ali Sami Yen Spor Kompleksi, İstanbul",
       image: "assets/images/match-10.jpg",
-      date: "Sunday 21:45 - 00:00",
+      date: "June 23, 21:45",
       category: "just-for-you",
     },
     {
@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Türkiye vs Sırbistan (Basketbol)",
       desc: "Ülker Spor ve Etkinlik Salonu, İstanbul",
       image: "assets/images/match-11.jpg",
-      date: "Saturday 20:30 - 23:00",
+      date: "June 22, 20:30",
       category: "just-for-you",
     },
     {
@@ -124,10 +124,11 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Beşiktaş vs Trabzonspor",
       desc: "Vodafone Park, İstanbul",
       image: "assets/images/match-12.jpg",
-      date: "Friday 21:00 - 23:15",
+      date: "June 21, 21:00",
       category: "just-for-you",
     },
   ];
+
   // Sayfa üzerinde ilgili kategori bölümlerinin DOM elementlerini alıyoruz
   const upcoming = document.getElementById("upcoming-events");
   const last = document.getElementById("last-time-offers");

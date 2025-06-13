@@ -406,20 +406,22 @@
               const link = document.createElement("a");
               link.href = qr.toDataURL("image/png");
               link.download = "ticket-qr.png";
-
-              // İndirme işlemi bittikten sonra yönlendirme
-              link.addEventListener("click", () => {
-                setTimeout(() => {
-                  window.location.href = "index.html";
-                }, 1000);
-              });
-
               document.body.appendChild(link);
               link.click();
               document.body.removeChild(link);
+
+              // Kullanıcıya bilgi ver
+              alert(
+                "Your ticket has been successfully downloaded. Enjoy the event!"
+              );
+
+              // 2 saniye sonra ana sayfaya yönlendir
+              setTimeout(() => {
+                window.location.href = "index-after-logged-in.html";
+              }, 2000);
             };
           });
-        // ✅ Kapatma işlemi için bu satırı eklemelisin
+        // Kapatma işlemi için bu satırı eklemelisin
         closeButton.addEventListener("click", () => {
           qrModal.style.display = "none";
         });

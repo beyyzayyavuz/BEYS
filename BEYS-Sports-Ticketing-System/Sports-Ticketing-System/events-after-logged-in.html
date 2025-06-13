@@ -82,16 +82,22 @@
 
               <!-- Menu -->
               <ul class="nav">
-                <li><a href="index-after-logged-in.html">Home</a></li>
                 <li>
-                  <a href="events-after-logged-in.html" class="active"
-                    >Events</a
-                  >
+                  <a href="index-after-logged-in.html">Home</a>
                 </li>
+                <li><a href="events-after-logged-in.html" class="active">Events </a></li>
                 <li><a href="favorites.html">My Favorites</a></li>
                 <li><a href="cart.html">My Cart</a></li>
+                <li><a href="profile.html">My Profile</a></li>
                 <li>
-                  <a href="profile.html">My Profile</a>
+                  <a
+                    href="notification.html"
+                    class="notification-icon"
+                    style="position: relative"
+                  >
+                    <i class="fa fa-bell"></i>
+                    <span class="notification-badge"></span>
+                  </a>
                 </li>
               </ul>
 
@@ -146,17 +152,17 @@
                           <option name="Asia" id="Asia">Asia</option>
                         </select>
                       </div>
+                    
                       <div class="col-lg-3">
-                        <select value="month">
-                          <option value="month">Price</option>
-                          <option name="min" id="min">$0 - $50</option>
-                          <option name="standard" id="standard">
-                            $50 - $100
-                          </option>
-                          <option name="hight" id="hight">$100 - $200</option>
-                        </select>
-                      </div>
-                      <div class="col-lg-3">
+                       <select id="category-filter">
+              <option value="">Category</option>
+              <option value="football">Football</option>
+              <option value="basketball">Basketball</option>
+              <option value="volleyball">Volleyball</option>
+              <option value="tennis">Tennis</option>
+            </select>
+          </div>
+          <div class="col-lg-3">
                         <fieldset>
                           <button
                             type="submit"
@@ -167,7 +173,6 @@
                           </button>
                         </fieldset>
                       </div>
-                    </div>
                   </div>
                 </div>
               </form>
