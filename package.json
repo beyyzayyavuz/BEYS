@@ -1,0 +1,27 @@
+{
+  "name": "beys",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beyyzayyavuz/BEYS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/beyyzayyavuz/BEYS/issues"
+  },
+  "homepage": "https://github.com/beyyzayyavuz/BEYS#readme",
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "jest": "^30.0.0",
+    "jest-environment-jsdom": "^30.0.0"
+  }
+}
